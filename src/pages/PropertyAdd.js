@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form, } from 'formik';
 import { Stepper, Step, StepLabel, Box } from '@mui/material';
 import * as Yup from 'yup';
 import {
-    TextField,
-    MenuItem,
-    InputLabel,
-    Select,
-    FormControl,
     Button,
     Grid,
-    Typography,
 } from '@mui/material';
 import FirstStep from '../component/steps/FirstStep';
 import SecondStep from '../component/steps/SecondStep';
@@ -33,10 +27,6 @@ const initialValues = {
     cars: "",
     story: "",
     no_of_vehicles: "",
-
-
-
-
 // second
     footprint_width: "",
     footprint_depth: "",
@@ -51,18 +41,9 @@ const initialValues = {
     foundation: "",
     special_features: "",
     exterior_walls: {},
-
-
-
-
-
 // third
-
     lot_features: "",
     collections:"",
-
-
-
 // forth
     price: '',
     initial_discount: '',
@@ -89,10 +70,6 @@ const PropertyForm = () => {
     };
 
 
-
-
-
-
     const handleSubmit = (values) => {
         // Handle form submission
         if (!isLastStep && values) {
@@ -104,8 +81,6 @@ const PropertyForm = () => {
         }
        
     };
-
-
 
 
     const handleBack = () => {
