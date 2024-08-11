@@ -13,6 +13,7 @@ import FourthStep from '../component/steps/FourthStep';
 import { step1ValidationSchema, step2ValidationSchema, step3ValidationSchema, step4ValidationSchema } from '../common/Validations';
 import apiEndPoint from '../utilis/api';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 // Initial values based on your provided data
 
@@ -54,6 +55,7 @@ const initialValues = {
 
 const PropertyForm = () => {
     const [activeStep, setActiveStep] = useState(0);
+    const navigate = useNavigate();
     const isLastStep = activeStep === steps.length - 1;
 
     const getValidationSchema = () => {
@@ -79,19 +81,18 @@ const PropertyForm = () => {
 
     const handleSubmit = async (values) => {
         // Handle form submission
-        debugger
         if (!isLastStep && values) {
             setActiveStep(activeStep + 1);
             console.log("sdfasfsdfsdf", values);
         } else {
             console.log("barg", values);
-            debugger
             let apiRes = await apiEndPoint.Property.addProperty(values)
             console.log("add property response", apiRes)
-            if (apiRes?.status == 200) {
+            if (apiRes?.status == 200 || apiRes.data) {
                 toast.success("Property added successfully")
+                navigate('/property')
             } else {
-                toast.error(apiRes?.err)
+                toast.error(apiRes)
             }
         }
     };
