@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, } from 'formik';
 import { Stepper, Step, StepLabel, Box } from '@mui/material';
 import * as Yup from 'yup';
@@ -12,6 +12,9 @@ import ThirdStep from '../component/steps/ThirdStep';
 import FourthStep from '../component/steps/FourthStep';
 import { step1ValidationSchema, step2ValidationSchema, step3ValidationSchema, step4ValidationSchema } from '../common/Validations';
 import PreviewPage from '../common/PreviewPage';
+import apiEndPoint from '../utilis/api';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 // Initial values based on your provided data
 
@@ -57,6 +60,7 @@ const PropertyForm = () => {
 
 
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
     const isLastStep = activeStep === steps.length - 1;
 
     const getValidationSchema = () => {
@@ -74,8 +78,13 @@ const PropertyForm = () => {
         }
     };
 
+    useEffect(()=>{
+        let token = sessionStorage.getItem('token')
+        apiEndPoint.setToken(token)
+    },[])
 
-    const handleSubmit = (values) => {
+
+    const handleSubmit = async (values) => {
         // Handle form submission
         if (!isLastStep && values) {
             setActiveStep(activeStep + 1);
@@ -84,6 +93,14 @@ const PropertyForm = () => {
         } else {
             console.log("barg", values);
             setShow(false)
+            let apiRes = await apiEndPoint.Property.addProperty(values)
+            console.log("add property response", apiRes)
+            if (apiRes?.status == 200 || apiRes.data) {
+                toast.success("Property added successfully")
+                navigate('/property')
+            } else {
+                toast.error(apiRes)
+            }
         }
 
     };
