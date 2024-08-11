@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { TokenProvider } from './context/tokenContext';
 
 // Create a custom theme with orange colors
 const theme = createTheme({
@@ -27,7 +28,9 @@ root.render(
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <TokenProvider>
         <App />
+        </TokenProvider>
       </ThemeProvider>
     </StyledEngineProvider>
   </React.StrictMode>

@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box } from '@mui/material';
 import PropertyCard from '../component/PropertyCard';
 import apiEndPoint from '../utilis/api';
+import imageUrl from "../assets/property 1.jpeg";
 
 const properties = [
   {
@@ -23,37 +24,38 @@ const properties = [
 ];
 
 const PropertyPage = () => {
+  const [state, setState] = useState({})
 
   const getPropertyApi = async () => {
     try {
       let apiRes = await apiEndPoint.Property.listing()
-      console.log("apiRes get", apiRes)
+      setState(apiRes)
     } catch (error) {
       console.log("error get", error)
     }
   }
 
+  console.log("state", state.data)
   useEffect(() => {
-    let token = sessionStorage.getItem('token')
-    apiEndPoint.setToken(token)
-    if (token) {
-      getPropertyApi()
-    }
-  }, [])
-
+    getPropertyApi();
+  }, []);
 
   return (
     <Box sx={{ p: 3 }}>
       <Grid container spacing={3}>
-        {properties.map((property, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <PropertyCard
-              title={property.title}
-              description={property.description}
-              image={property.image}
-            />
-          </Grid>
-        ))}
+        {Array.isArray(state?.data) && state?.data?.length > 0 ?
+          state?.data?.map((res, index) => (
+            <Grid item xs={12} sm={6} md={4} key={res?._id}>
+              <PropertyCard
+                title={res?.name}
+                price={res?.price}
+                image={imageUrl}
+                id={res?._id}
+              />
+            </Grid>
+          ))
+          : <p className='text-center'>No Property Added</p>
+        }
       </Grid>
     </Box>
   );

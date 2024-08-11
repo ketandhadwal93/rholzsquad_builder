@@ -7,8 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { formatPrice } from '../utilis/commFunction';
 
-const PropertyCard = ({ title, description, image }) => {
+const PropertyCard = ({ title, price, image, id }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia sx={{ height: 140 }} image={image} title={title} />
@@ -17,12 +18,12 @@ const PropertyCard = ({ title, description, image }) => {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          ${formatPrice(Number(price))}
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Edit</Button>
       </CardActions>
     </Card>
   );

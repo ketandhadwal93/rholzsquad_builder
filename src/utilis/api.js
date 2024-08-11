@@ -21,7 +21,6 @@ const responseBody = (res) => res.body;
 let token = null;
 const tokenPlugin = (req) => {
   if (token) {
-    debugger
     req.set('token', `${token}`);
   }
 };

@@ -73,14 +73,7 @@ const PropertyForm = () => {
         }
     };
 
-    useEffect(()=>{
-        let token = sessionStorage.getItem('token')
-        apiEndPoint.setToken(token)
-    },[])
-
-
     const handleSubmit = async (values) => {
-        // Handle form submission
         if (!isLastStep && values) {
             setActiveStep(activeStep + 1);
             console.log("sdfasfsdfsdf", values);
