@@ -1,131 +1,161 @@
-
 import React, { useState } from 'react';
-import { Button, Stepper, Step, StepLabel, Box } from '@mui/material';
-import { Formik, Form } from 'formik';
-// import * as Yup from 'yup';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Stepper, Step, StepLabel, Box } from '@mui/material';
+import * as Yup from 'yup';
+import {
+    TextField,
+    MenuItem,
+    InputLabel,
+    Select,
+    FormControl,
+    Button,
+    Grid,
+    Typography,
+} from '@mui/material';
 import FirstStep from '../component/steps/FirstStep';
-import SecondStep from '../component/steps/SecondStep';
-import ThirdStep from '../component/steps/ThirdStep';
 
+// Initial values based on your provided data
 
-const steps = ['Basic Information', 'Property Details', 'Additional Features'];
-
+const steps = ['Basic Information', 'Dimensions and Features', 'Collections and Lot Features',"Pricing and Discounts"];
 const initialValues = {
+
     name: '',
     plan_style: '',
-    plan_type: '',
+    plan_type: "",
     sq_ft: '',
     floors: '',
-    beds: '',
-    baths: '',
-    cars: '',
-    story: '',
-    no_of_vehicles: '',
-    footprint_width: '',
-    footprint_depth: '',
-    footprint_height: '',
-    garage_type: '',
-    garage_location: '',
-    bed_bath_options: '',
-    kitchen_dinning: '',
-    laundry_location: '',
-    additional_rooms: '',
-    outdoor_features: '',
-    foundation: '',
-    special_features: '',
-    exterior_walls: '',
-    collections: '',
-    lot_features: '',
+    beds: 0,
+    baths: 0,
+    cars: 0,
+    story: 0,
+    no_of_vehicles: 0,
+
+
+
+
+
+    footprint_width: 0,
+    footprint_depth: 0,
+    footprint_height: 0,
+    garage_type: 1,
+    garage_location: 1,
+    bed_bath_options: 1,
+    kitchen_dinning: 1,
+    laundry_location: 1,
+    additional_rooms: 1,
+    outdoor_features: 1,
+    foundation: 1,
+    special_features: 1,
+    exterior_walls: {},
+
+
+
+
+
+
+
+
+    lot_features: 1,
+    collections: 1,
+    
+    
+    
+   
     price: '',
     initial_discount: '',
 };
 
-// const validationSchema = [
-//     Yup.object({
-//         name: Yup.string().required('Required'),
-//         plan_style: Yup.string().required('Required'),
-//         plan_type: Yup.number().required('Required'),
-//     }),
-//     Yup.object({
-//         sq_ft: Yup.string().required('Required'),
-//         floors: Yup.string().required('Required'),
-//         beds: Yup.number().required('Required'),
-//         baths: Yup.number().required('Required'),
-//     }),
-//     Yup.object({
-//         cars: Yup.number().required('Required'),
-//         price: Yup.string().required('Required'),
-//         initial_discount: Yup.string().required('Required'),
-//     }),
-// ];
+// Validation schema using Yup
+const validationSchema = Yup.object({
+    name: Yup.string().required('Name is required'),
+    plan_style: Yup.string().required('Plan style is required'),
+    plan_type: Yup.number().required('Plan type is required').min(1),
+    sq_ft: Yup.string().required('Square footage is required'),
+    floors: Yup.string().required('Floors is required'),
+    beds: Yup.number().required('Beds is required').min(0),
+    baths: Yup.number().required('Baths is required').min(0),
+    cars: Yup.number().required('Cars is required').min(0),
+    story: Yup.number().required('Story is required').min(0),
+    no_of_vehicles: Yup.number().required('Number of vehicles is required').min(0),
+    footprint_width: Yup.number().required('Footprint width is required').min(0),
+    footprint_depth: Yup.number().required('Footprint depth is required').min(0),
+    footprint_height: Yup.number().required('Footprint height is required').min(0),
+    garage_type: Yup.number().required('Garage type is required').min(1),
+    garage_location: Yup.number().required('Garage location is required').min(1),
+    bed_bath_options: Yup.number().required('Bed bath options are required').min(1),
+    kitchen_dinning: Yup.number().required('Kitchen dining options are required').min(1),
+    laundry_location: Yup.number().required('Laundry location is required').min(1),
+    additional_rooms: Yup.number().required('Additional rooms are required').min(1),
+    outdoor_features: Yup.number().required('Outdoor features are required').min(1),
+    foundation: Yup.number().required('Foundation type is required').min(1),
+    special_features: Yup.number().required('Special features are required').min(1),
+    exterior_walls: Yup.object().required('Exterior walls are required'),
+    collections: Yup.number().required('Collections are required').min(1),
+    lot_features: Yup.number().required('Lot features are required').min(1),
+    price: Yup.string().required('Price is required'),
+    initial_discount: Yup.string().required('Initial discount is required'),
+});
 
-const PropertyAdd = () => {
+const PropertyForm = () => {
     const [activeStep, setActiveStep] = useState(0);
 
-    const isLastStep = activeStep === steps.length - 1;
 
-    const handleNext = (values) => {
-        if (!isLastStep) {
-            setActiveStep(activeStep + 1);
-        } else {
-            // Submit form data
-            console.log(values);
-        }
-    };
-
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
+    const handleSubmit = (values) => {
+        // Handle form submission
+        console.log(values);
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
         <Formik
             initialValues={initialValues}
-            // validationSchema={validationSchema[activeStep]}
-            onSubmit={handleNext}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
         >
-            {({ values, isSubmitting }) => (
+            {({ setFieldValue, errors, touched, values }) => (
                 <Form>
-                    <Stepper activeStep={activeStep}>
-                        {steps.map((label) => (
-                            <Step key={label}>
-                                <StepLabel>{label}</StepLabel>
-                            </Step>
-                        ))}
-                    </Stepper>
-                    <Box>
-                        {activeStep === 0 && <FirstStep />}
-                        {activeStep === 1 && <SecondStep />}
-                        {activeStep === 2 && <ThirdStep />}
-                    </Box>
-                
+                    <>
+                        <Stepper activeStep={activeStep}>
+                            {steps.map((label) => (
+                                <Step key={label}>
+                                    <StepLabel>{label}</StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
 
+                        <Grid container spacing={2}>
+                            <FirstStep
+                                setFieldValue={setFieldValue}
+                                errors={errors}
+                                touched={touched}
+                                values={values}
+                            />
 
-                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
-            <Box sx={{ flex: '1 1 auto' }} />
-            {/* {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )} */}
+                            {/* Add more fields similarly */}
+                            <Grid item xs={12}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                                    <Button
+                                        color="inherit"
+                                        disabled={activeStep === 0}
+                                        sx={{ mr: 1 }}
+                                    >
+                                        Back
+                                    </Button>
+                                    <Box sx={{ flex: '1 1 auto' }} />
+                                    <Button
+                                        variant="contained" color="primary"
+                                        type='submit'
+                                    >
+                                        {activeStep === activeStep === 2 ? 'Finish' : 'Next'}
+                                    </Button>
+                                </Box>
+                            </Grid>
 
-            <Button onClick={handleNext}>
-              {activeStep === activeStep === 2 ? 'Finish' : 'Next'}
-            </Button>
-          </Box>
+                        </Grid>
+                    </>
                 </Form>
             )}
         </Formik>
-        </Box>
     );
 };
 
-export default PropertyAdd;
+export default PropertyForm;
