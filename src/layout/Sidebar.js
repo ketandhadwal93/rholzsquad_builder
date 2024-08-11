@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { Box, Toolbar, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Drawer } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Logout } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
 const Sidebar = ({ mobileOpen, handleDrawerToggle, handleDrawerClose, handleDrawerTransitionEnd, container }) => {
+
+  const handleLogout = () => {
+    sessionStorage.clear()
+  }
+
   const drawer = (
     <div>
       <Toolbar />
@@ -44,6 +50,16 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, handleDrawerClose, handleDraw
             </ListItemButton>
           </ListItem>
         ))}
+      </List>
+      <List>
+        <ListItem key={"Log Out"} disablePadding onClick={handleLogout}>
+          <ListItemButton component={Link} to={'/'}>
+            <ListItemIcon>
+              <Logout />
+            </ListItemIcon>
+            <ListItemText primary={"Log Out"} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
