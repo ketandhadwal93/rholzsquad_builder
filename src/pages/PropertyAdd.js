@@ -13,54 +13,56 @@ import {
     Typography,
 } from '@mui/material';
 import FirstStep from '../component/steps/FirstStep';
+import SecondStep from '../component/steps/SecondStep';
+import ThirdStep from '../component/steps/ThirdStep';
+import FourthStep from '../component/steps/FourthStep';
 
 // Initial values based on your provided data
 
-const steps = ['Basic Information', 'Dimensions and Features', 'Collections and Lot Features',"Pricing and Discounts"];
+const steps = ['Basic Information', 'Dimensions and Features', 'Collections and Lot Features', "Pricing and Discounts"];
 const initialValues = {
-
+// FirstStep
     name: '',
     plan_style: '',
     plan_type: "",
     sq_ft: '',
     floors: '',
-    beds: 0,
-    baths: 0,
-    cars: 0,
-    story: 0,
-    no_of_vehicles: 0,
+    beds: "",
+    baths: "",
+    cars: "",
+    story: "",
+    no_of_vehicles: "",
 
 
 
 
-
-    footprint_width: 0,
-    footprint_depth: 0,
-    footprint_height: 0,
-    garage_type: 1,
-    garage_location: 1,
-    bed_bath_options: 1,
-    kitchen_dinning: 1,
-    laundry_location: 1,
-    additional_rooms: 1,
-    outdoor_features: 1,
-    foundation: 1,
-    special_features: 1,
+// second
+    footprint_width: "",
+    footprint_depth: "",
+    footprint_height: "",
+    garage_type: "",
+    garage_location: "",
+    bed_bath_options: "",
+    kitchen_dinning: "",
+    laundry_location: "",
+    additional_rooms: "",
+    outdoor_features: "",
+    foundation: "",
+    special_features: "",
     exterior_walls: {},
 
 
 
 
 
+// third
+
+    lot_features: "",
+    collections:"",
 
 
 
-    lot_features: 1,
-    collections: 1,
-    
-    
-    
-   
+// forth
     price: '',
     initial_discount: '',
 };
@@ -98,13 +100,26 @@ const validationSchema = Yup.object({
 
 const PropertyForm = () => {
     const [activeStep, setActiveStep] = useState(0);
-
+    const isLastStep = activeStep === steps.length - 1;
 
     const handleSubmit = (values) => {
         // Handle form submission
         console.log(values);
     };
 
+
+    const handleNext = (values) => {
+        if (!isLastStep) {
+            setActiveStep(activeStep + 1);
+        } else {
+            // Submit form data
+            console.log(values);
+        }
+    };
+
+    const handleBack = () => {
+        setActiveStep(activeStep - 1);
+    };
     return (
         <Formik
             initialValues={initialValues}
@@ -123,29 +138,49 @@ const PropertyForm = () => {
                         </Stepper>
 
                         <Grid container spacing={2}>
-                            <FirstStep
+                        {activeStep === 0 &&    <FirstStep
                                 setFieldValue={setFieldValue}
                                 errors={errors}
                                 touched={touched}
                                 values={values}
-                            />
+                            />}
+                             {activeStep === 1 &&    <SecondStep
+                                setFieldValue={setFieldValue}
+                                errors={errors}
+                                touched={touched}
+                                values={values}
+                            />}
+                             {activeStep === 2 &&    <ThirdStep
+                                setFieldValue={setFieldValue}
+                                errors={errors}
+                                touched={touched}
+                                values={values}
+                            />}
+                             {activeStep === 3 &&    <FourthStep
+                                setFieldValue={setFieldValue}
+                                errors={errors}
+                                touched={touched}
+                                values={values}
+                            />}
+
 
                             {/* Add more fields similarly */}
                             <Grid item xs={12}>
                                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                     <Button
-                                        color="inherit"
+                                         variant="contained" color="primary"
                                         disabled={activeStep === 0}
                                         sx={{ mr: 1 }}
+                                        onClick={handleBack}
                                     >
                                         Back
                                     </Button>
                                     <Box sx={{ flex: '1 1 auto' }} />
                                     <Button
                                         variant="contained" color="primary"
-                                        type='submit'
+                                        onClick={handleNext}
                                     >
-                                        {activeStep === activeStep === 2 ? 'Finish' : 'Next'}
+                                        {activeStep === 3 ? 'Finish' : 'Next'}
                                     </Button>
                                 </Box>
                             </Grid>
