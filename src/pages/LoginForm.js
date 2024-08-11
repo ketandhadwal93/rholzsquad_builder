@@ -21,6 +21,7 @@ function LoginForm() {
       if (apiRes?.token) {
         toast.success("Login Successfully")
         sessionStorage.setItem("token", apiRes.token)
+        apiEndPoint.setToken( apiRes.token)
         navigate(`/dashboard`)
       }
     } catch (error) {
