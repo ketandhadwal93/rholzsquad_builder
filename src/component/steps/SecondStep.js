@@ -245,7 +245,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     <ErrorMessage name="special_features" component="div" />
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="exterior_walls-label">Exterior Walls</InputLabel>
                     <Select
@@ -266,7 +266,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     </Select>
                     <ErrorMessage name="exterior_walls" component="div" />
                 </FormControl>
-            </Grid>
+            </Grid> */}
         </>
     );
 };

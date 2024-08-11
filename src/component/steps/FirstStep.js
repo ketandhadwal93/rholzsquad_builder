@@ -8,7 +8,7 @@ import {
     FormControl,
     Grid,
 } from '@mui/material';
-import { plan_type_Select_data } from '../../constants/constant';
+import { plan_style_select_data, plan_type_Select_data } from '../../constants/constant';
 
 const FirstStep = ({ setFieldValue, errors, touched, values }) => {
     return (
@@ -29,7 +29,7 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
-                    <TextField
+                    {/* <TextField
                         name="plan_style"
                         label="Plan Style"
                         variant="outlined"
@@ -37,7 +37,24 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
                         onChange={(e) => setFieldValue('plan_style', e.target.value)}
                         error={touched.plan_style && Boolean(errors.plan_style)}
                         helperText={<ErrorMessage name="plan_style" />}
-                    />
+                    /> */}
+                    <InputLabel id="plan_style-label">Plan Style</InputLabel>
+                    <Select
+                        labelId="plan_style-label"
+                        name="plan_style"
+                        id="plan_style-select"
+                        label="Plan Style"
+                        value={values.plan_style}
+                        onChange={(e) => setFieldValue('plan_style', e.target.value)}
+                        error={touched.plan_style && Boolean(errors.plan_style)}
+                    >
+                        {plan_style_select_data.map((ele, index) => {
+                            return (
+                                <MenuItem value={ele.value} key={index}>{ele.label}</MenuItem>
+                            )
+                        })}
+                    </Select>
+                    <ErrorMessage name="plan_style" component="div" />
                 </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>

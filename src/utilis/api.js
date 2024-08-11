@@ -21,8 +21,8 @@ const responseBody = (res) => res.body;
 let token = null;
 const tokenPlugin = (req) => {
   if (token) {
-    req.set('Authorization', `Bearer ${token}`);
-    // req.set('token', token || "mim");
+    debugger
+    req.set('token', `${token}`);
   }
 };
 
@@ -101,27 +101,13 @@ const Dashboard = {
     requests.get(`dashboard${q ? `?${q}` : ''}`)
 };
 
-const User = {
+const Property = {
+  addProperty: (info) =>
+    requests.post('property', info),
   listing: (q) =>
-    requests.get(`users?${q}`),
-  export: (start_date, end_date) =>
-    requests.get(`users/export?start_date=${start_date}&end_date=${end_date}`),
+    requests.get(`property${q ? `?${q}` : ""}`),
   getById: (id) =>
-    requests.get(`users/${id}`),
-  getGamesById: (id, q) =>
-    requests.get(`game/admin/user/${id}?${q}`),
-  getPointsById: (id) =>
-    requests.get(`users/${id}/points`),
-  managePoints: (info) =>
-    requests.patch(`users/points`, info),
-  spentPointsList: (user_id, q) =>
-    requests.get(`users/points-list?user_id=${user_id}${q ? `&${q}` : ''}`),
-  getReviewsById: (id) =>
-    requests.get(`users/${id}/rating`),
-  getDonateProductsList: (user_id, q) =>
-    requests.get(`product?user_id=${user_id}${q ? `&${q}` : ''}`),
-  getDonateProductById: (id) =>
-    requests.get(`product/${id}`),
+    requests.get(`property/${id}`),
   block: (id, info) =>
     requests.put(`users/${id}/block`, info),
   deactivate: (id, info) =>
@@ -129,7 +115,9 @@ const User = {
   delete: (id) =>
     requests.del(`admin/user/${id}`),
   import: (file) =>
-    requests.file(`admin/user/import`, 'file', file)
+    requests.file(`admin/user/import`, 'file', file),
+  export: (start_date, end_date) =>
+    requests.get(`users/export?start_date=${start_date}&end_date=${end_date}`),
 };
 
 const FILES = {
@@ -160,7 +148,7 @@ const apiEndPoint = {
   Dashboard,
   FILES,
   SocialPage,
-  User,
+  Property,
   encode,
   setToken: (_token) => {
     token = _token;

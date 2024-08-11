@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Box } from '@mui/material';
 import PropertyCard from '../component/PropertyCard';
+import apiEndPoint from '../utilis/api';
 
 const properties = [
   {
@@ -22,6 +23,25 @@ const properties = [
 ];
 
 const PropertyPage = () => {
+
+  const getPropertyApi = async () => {
+    try {
+      let apiRes = await apiEndPoint.Property.listing()
+      console.log("apiRes get", apiRes)
+    } catch (error) {
+      console.log("error get", error)
+    }
+  }
+
+  useEffect(() => {
+    let token = sessionStorage.getItem('token')
+    apiEndPoint.setToken(token)
+    if (token) {
+      getPropertyApi()
+    }
+  }, [])
+
+
   return (
     <Box sx={{ p: 3 }}>
       <Grid container spacing={3}>

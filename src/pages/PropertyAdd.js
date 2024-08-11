@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form, } from 'formik';
 import { Stepper, Step, StepLabel, Box } from '@mui/material';
 import * as Yup from 'yup';
@@ -11,12 +11,14 @@ import SecondStep from '../component/steps/SecondStep';
 import ThirdStep from '../component/steps/ThirdStep';
 import FourthStep from '../component/steps/FourthStep';
 import { step1ValidationSchema, step2ValidationSchema, step3ValidationSchema, step4ValidationSchema } from '../common/Validations';
+import apiEndPoint from '../utilis/api';
+import { toast } from 'react-toastify';
 
 // Initial values based on your provided data
 
 const steps = ['Basic Information', 'Dimensions and Features', 'Collections and Lot Features', "Pricing and Discounts"];
 const initialValues = {
-// FirstStep
+    // FirstStep
     name: '',
     plan_style: '',
     plan_type: "",
@@ -27,7 +29,7 @@ const initialValues = {
     cars: "",
     story: "",
     no_of_vehicles: "",
-// second
+    // second
     footprint_width: "",
     footprint_depth: "",
     footprint_height: "",
@@ -41,10 +43,10 @@ const initialValues = {
     foundation: "",
     special_features: "",
     exterior_walls: {},
-// third
+    // third
     lot_features: "",
-    collections:"",
-// forth
+    collections: "",
+    // forth
     price: '',
     initial_discount: '',
 };
@@ -69,17 +71,29 @@ const PropertyForm = () => {
         }
     };
 
+    useEffect(()=>{
+        let token = sessionStorage.getItem('token')
+        apiEndPoint.setToken(token)
+    },[])
 
-    const handleSubmit = (values) => {
+
+    const handleSubmit = async (values) => {
         // Handle form submission
+        debugger
         if (!isLastStep && values) {
-            debugger
             setActiveStep(activeStep + 1);
-            console.log("sdfasfsdfsdf",values);
+            console.log("sdfasfsdfsdf", values);
         } else {
-            console.log("barg",values);
+            console.log("barg", values);
+            debugger
+            let apiRes = await apiEndPoint.Property.addProperty(values)
+            console.log("add property response", apiRes)
+            if (apiRes?.status == 200) {
+                toast.success("Property added successfully")
+            } else {
+                toast.error(apiRes?.err)
+            }
         }
-       
     };
 
 
@@ -104,25 +118,25 @@ const PropertyForm = () => {
                         </Stepper>
 
                         <Grid container spacing={2}>
-                        {activeStep === 0 &&    <FirstStep
+                            {activeStep === 0 && <FirstStep
                                 setFieldValue={setFieldValue}
                                 errors={errors}
                                 touched={touched}
                                 values={values}
                             />}
-                             {activeStep === 1 &&    <SecondStep
+                            {activeStep === 1 && <SecondStep
                                 setFieldValue={setFieldValue}
                                 errors={errors}
                                 touched={touched}
                                 values={values}
                             />}
-                             {activeStep === 2 &&    <ThirdStep
+                            {activeStep === 2 && <ThirdStep
                                 setFieldValue={setFieldValue}
                                 errors={errors}
                                 touched={touched}
                                 values={values}
                             />}
-                             {activeStep === 3 &&    <FourthStep
+                            {activeStep === 3 && <FourthStep
                                 setFieldValue={setFieldValue}
                                 errors={errors}
                                 touched={touched}
@@ -134,7 +148,7 @@ const PropertyForm = () => {
                             <Grid item xs={12}>
                                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                     <Button
-                                         variant="contained" color="primary"
+                                        variant="contained" color="primary"
                                         disabled={activeStep === 0}
                                         sx={{ mr: 1 }}
                                         onClick={handleBack}
