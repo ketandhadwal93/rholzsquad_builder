@@ -92,7 +92,7 @@ const PropertyForm = () => {
                 toast.success("Property added successfully")
                 navigate('/property')
             } else {
-                toast.error(apiRes)
+                toast.error(apiRes?.message)
             }
         }
 
