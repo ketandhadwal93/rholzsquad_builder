@@ -2,7 +2,7 @@ import _superagent from 'superagent';
 const SuperagentPromise = require('superagent-promise');
 const superagent = SuperagentPromise(_superagent, global.Promise);
 
-const API_ROOT = `http://rholzsquad.com:3009/builder/`;
+const API_ROOT = "https://api.rholzsquad.com/builder/";
 
 const BUCKET_ROOT = `https://demoprojectsbucket.sgp1.digitaloceanspaces.com/shared2/`;
 const DB_ROOT = `https://dreamgrant.s3.amazonaws.com/`;
