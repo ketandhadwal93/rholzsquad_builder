@@ -44,7 +44,7 @@ const initialValues = {
     outdoor_features: [],
     foundation: [],
     special_features: [],
-    exterior_walls: {},
+    // exterior_walls: {},
     // third
     lot_features: [],
     collections: [],
@@ -178,15 +178,7 @@ const PropertyForm = () => {
                                             </Button>
                                             <Box sx={{ flex: '1 1 auto' }} />
 
-                                            {activeStep === 3 &&
-                                                <Button
-                                                    variant="contained" color="primary"
-                                                    onClick={() => handleHide(values)}
-                                                    type='submit'
-                                                >
-                                                    Preview
-                                                </Button>
-                                            }
+                                           
                                             <Button
                                                 variant="contained" color="primary"
                                                 // onClick={handleNext}

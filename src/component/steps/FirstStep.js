@@ -66,6 +66,7 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
                         name="plan_type"
                         id="plan_type-select"
                         label="Plan Type"
+                        multiple
                         value={values.plan_type}
                         onChange={(e) => setFieldValue('plan_type', e.target.value)}
                         error={touched.plan_type && Boolean(errors.plan_type)}
