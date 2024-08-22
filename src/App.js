@@ -13,6 +13,7 @@ import Property from './pages/Property';
 import PropertyAdd from './pages/PropertyAdd';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import PropertyDetailPage from './pages/PropertyDetailPage';
 
 function App(props) {
   const { window } = props;
@@ -94,6 +95,20 @@ function App(props) {
             </PrivateLayout>
           }
         />
+
+
+<Route
+          path="/property/:id"
+          element={
+            <PrivateLayout>
+              <PropertyDetailPage />
+            </PrivateLayout>
+          }
+        />
+
+
+
+
 
 
       </Routes>
