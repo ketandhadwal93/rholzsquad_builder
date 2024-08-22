@@ -14,6 +14,7 @@ const ThirdStep = ({ setFieldValue, errors, touched, values }) => {
                         name="lot_features"
                         id="lot_features-select"
                         label="Lot Features"
+                        multiple
                         value={values.lot_features}
                         onChange={(e) => setFieldValue('lot_features', e.target.value)}
                         error={touched.lot_features && Boolean(errors.lot_features)}
@@ -35,6 +36,7 @@ const ThirdStep = ({ setFieldValue, errors, touched, values }) => {
                         name="collections"
                         id="collections-select"
                         label="Collections"
+                        multiple
                         value={values.collections}
                         onChange={(e) => setFieldValue('collections', e.target.value)}
                         error={touched.collections && Boolean(errors.collections)}
