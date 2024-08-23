@@ -103,6 +103,8 @@ const Dashboard = {
 const Property = {
   addProperty: (info) =>
     requests.post('property', info),
+  editProperty: (info, id) =>
+    requests.put(`property/${id}`, info),
   listing: (q) =>
     requests.get(`property${q ? `?${q}` : ""}`),
   getById: (id) =>
