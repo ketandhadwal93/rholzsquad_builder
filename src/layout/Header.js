@@ -11,6 +11,10 @@ const Header = ({ handleDrawerToggle }) => {
 
   // Define titles based on the current route
   const getTitle = (pathname) => {
+    if (pathname.includes('/edit')) {
+      return 'Property Edit';
+    }
+  
     switch (pathname) {
       case '/dashboard':
         return 'Dashboard';
@@ -20,7 +24,7 @@ const Header = ({ handleDrawerToggle }) => {
         return 'Sign Up';
       case '/':
         return 'Login';
-        case '/property/new':
+      case '/property/new':
             return 'Create New Property '
       default:
         return 'Responsive Drawer';
