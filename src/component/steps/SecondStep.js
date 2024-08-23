@@ -56,7 +56,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="garage_type"
                         id="garage_type-select"
                         label="Garage Type"
-                        multiple
+                        
                         value={values.garage_type}
                         onChange={(e) => setFieldValue('garage_type', e.target.value)}
                         error={touched.garage_type && Boolean(errors.garage_type)}
@@ -79,7 +79,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="garage_location"
                         id="garage_location-select"
                         label="Garage Location"
-                        multiple
+                        
                         value={values.garage_location}
                         onChange={(e) => setFieldValue('garage_location', e.target.value)}
                         error={touched.garage_location && Boolean(errors.garage_location)}
@@ -104,7 +104,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="bed_bath_options"
                         id="bed_bath_options-select"
                         label="Bed/Bath Options"
-                        multiple
+                        
                         value={values.bed_bath_options}
                         onChange={(e) => setFieldValue('bed_bath_options', e.target.value)}
                         error={touched.bed_bath_options && Boolean(errors.bed_bath_options)}
@@ -129,7 +129,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="kitchen_dinning"
                         id="kitchen_dinning-select"
                         label="Kitchen/Dining"
-                        multiple
+                        
                         value={values.kitchen_dinning}
                         onChange={(e) => setFieldValue('kitchen_dinning', e.target.value)}
                         error={touched.kitchen_dinning && Boolean(errors.kitchen_dinning)}
@@ -151,7 +151,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         labelId="laundry_location-label"
                         name="laundry_location"
                         id="laundry_location-select"
-                        multiple
+                        
                         label="Laundry Location"
                         value={values.laundry_location}
                         onChange={(e) => setFieldValue('laundry_location', e.target.value)}
@@ -191,7 +191,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="outdoor_features"
                         id="outdoor_features-select"
                         label="Outdoor Features"
-                        multiple
+                        
                         value={values.outdoor_features}
                         onChange={(e) => setFieldValue('outdoor_features', e.target.value)}
                         error={touched.outdoor_features && Boolean(errors.outdoor_features)}
@@ -215,7 +215,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="foundation"
                         id="foundation-select"
                         label="Foundation"
-                        multiple
+                        
                         value={values.foundation}
                         onChange={(e) => setFieldValue('foundation', e.target.value)}
                         error={touched.foundation && Boolean(errors.foundation)}
@@ -237,7 +237,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                         name="special_features"
                         id="special_features-select"
                         label="Special Features"
-                        multiple
+                        
                         value={values.special_features}
                         onChange={(e) => setFieldValue('special_features', e.target.value)}
                         error={touched.special_features && Boolean(errors.special_features)}

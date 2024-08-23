@@ -44,7 +44,7 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
                         name="plan_style"
                         id="plan_style-select"
                         label="Plan Style"
-                        multiple
+                        
                         value={values.plan_style}
                         onChange={(e) => setFieldValue('plan_style', e.target.value)}
                         error={touched.plan_style && Boolean(errors.plan_style)}
@@ -66,7 +66,7 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
                         name="plan_type"
                         id="plan_type-select"
                         label="Plan Type"
-                        multiple
+                        
                         value={values.plan_type}
                         onChange={(e) => setFieldValue('plan_type', e.target.value)}
                         error={touched.plan_type && Boolean(errors.plan_type)}
