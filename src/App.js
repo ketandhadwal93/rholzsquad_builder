@@ -14,6 +14,7 @@ import PropertyAdd from './pages/PropertyAdd';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import PropertyDetailPage from './pages/PropertyDetailPage';
+import PropertyFormEdit from './pages/PropertyFormEdit';
 
 function App(props) {
   const { window } = props;
@@ -102,6 +103,18 @@ function App(props) {
           element={
             <PrivateLayout>
               <PropertyDetailPage />
+            </PrivateLayout>
+          }
+        />
+
+
+
+
+<Route
+          path="/property/edit/:id"
+          element={
+            <PrivateLayout>
+              <PropertyFormEdit />
             </PrivateLayout>
           }
         />

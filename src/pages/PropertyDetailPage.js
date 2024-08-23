@@ -1,137 +1,120 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Typography, Grid, Card, CardContent, Divider, Box, Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import apiEndPoint from '../utilis/api';
 
 const PropertyDetailPage = () => {
-    const { id } = useParams(); 
+  const navigate = useNavigate()
+  const { id } = useParams();
+  const [state, setState] = useState({});
 
-    const [state, setState] = useState({})
-
-    const getPropertyApi = async () => {
-      try {
-        let apiRes = await apiEndPoint.Property.getById(id)
-        setState(apiRes)
-      } catch (error) {
-        console.log("error get", error)
-      }
+  const getPropertyApi = async () => {
+    try {
+      let apiRes = await apiEndPoint.Property.getById(id);
+      setState(apiRes);
+    } catch (error) {
+      console.log("Error fetching property data", error);
     }
-  
-    console.log("stateDDDDDDDDDDDDD", state.data)
-    useEffect(() => {
-      getPropertyApi();
-    }, []);
-
-
-
-
-  // Static data
-  const data = {
-    // FirstStep
-    name: 'Luxury Villa',
-    plan_style: ['Modern'],
-    plan_type: ['Single Story'],
-    sq_ft: '3500',
-    floors: '2',
-    beds: '4',
-    baths: '3',
-    cars: '2',
-    story: '2',
-    no_of_vehicles: '2',
-    // second
-    footprint_width: '50',
-    footprint_depth: '60',
-    footprint_height: '20',
-    garage_type: ['Attached'],
-    garage_location: ['Front'],
-    bed_bath_options: ['Master Suite'],
-    kitchen_dinning: ['Open Plan'],
-    laundry_location: ['Main Floor'],
-    additional_rooms: 'Home Office',
-    outdoor_features: ['Pool', 'Garden'],
-    foundation: ['Concrete'],
-    special_features: ['Smart Home System'],
-    // third
-    lot_features: ['Corner Lot'],
-    collections: ['Luxury Homes'],
-    // forth
-    price: '$1,200,000',
-    initial_discount: '5%',
   };
+
+  useEffect(() => {
+    getPropertyApi();
+  }, []);
+
+
+
+
+
+
+  const gotoEdit = () => {
+    navigate(`/property/edit/${id}`); // Replace with dynamic property ID if needed
+  };
+
+
+  if (!state.data) {
+    return <Typography>Loading...</Typography>;
+  }
+
+  const { 
+    name, plan_style, plan_type, sq_ft, floors, beds, baths, cars, story, no_of_vehicles,
+    footprint_width, footprint_depth, footprint_height, garage_type, garage_location,
+    bed_bath_options, kitchen_dinning, laundry_location, additional_rooms, outdoor_features,
+    foundation, special_features, lot_features, collections, price, initial_discount 
+  } = state.data;
+
+  const renderDetail = (label, value) => (
+    <Grid item xs={12} sm={6}>
+      <Typography variant="subtitle1" color="textSecondary">
+        {label}
+      </Typography>
+      <Typography variant="body1">
+        {value || "N/A"}
+      </Typography>
+    </Grid>
+  );
 
   return (
     <Container maxWidth="md">
-         <Box display="flex" alignItems="center" mb={3}>
-        <Typography variant="h3" gutterBottom>
+      <Box display="flex" alignItems="center" mb={3}>
+        <Typography variant="h4" gutterBottom>
           Property Details
         </Typography>
-    <Button>Edit</Button>
+        <Button variant="contained" color="primary" style={{ marginLeft: 'auto' }} onClick={gotoEdit}>
+          Edit
+        </Button>
       </Box>
-
-      
-      <Card variant="outlined" sx={{ marginBottom: 3 }}>
+      <Card>
         <CardContent>
-          <Typography variant="h5">Basic Information</Typography>
-          <Divider sx={{ marginY: 2 }} />
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Typography><strong>Name:</strong> {data.name}</Typography>
-              <Typography><strong>Plan Style:</strong> {data.plan_style.join(', ')}</Typography>
-              <Typography><strong>Plan Type:</strong> {data.plan_type.join(', ')}</Typography>
-              <Typography><strong>Square Feet:</strong> {data.sq_ft}</Typography>
-              <Typography><strong>Floors:</strong> {data.floors}</Typography>
-              <Typography><strong>Beds:</strong> {data.beds}</Typography>
-              <Typography><strong>Baths:</strong> {data.baths}</Typography>
-              <Typography><strong>Cars:</strong> {data.cars}</Typography>
-              <Typography><strong>Story:</strong> {data.story}</Typography>
-              <Typography><strong>No. of Vehicles:</strong> {data.no_of_vehicles}</Typography>
+          <Typography variant="h5" gutterBottom>
+            {name || "Property Name"}
+          </Typography>
+          <Divider />
+
+          <Grid container spacing={2} mt={2}>
+            {renderDetail("Plan Style", plan_style)}
+            {renderDetail("Plan Type", plan_type)}
+            {renderDetail("Square Feet", sq_ft)}
+            {renderDetail("Floors", floors)}
+            {renderDetail("Beds", beds)}
+            {renderDetail("Baths", baths)}
+            {renderDetail("Cars", cars)}
+            {renderDetail("Story", story)}
+            {renderDetail("Number of Vehicles", no_of_vehicles)}
+
+            <Grid item xs={12}>
+              <Typography variant="h6" gutterBottom mt={2}>
+                Dimensions and Features
+              </Typography>
             </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+            {renderDetail("Footprint Width", footprint_width)}
+            {renderDetail("Footprint Depth", footprint_depth)}
+            {renderDetail("Footprint Height", footprint_height)}
+            {renderDetail("Garage Type", garage_type)}
+            {renderDetail("Garage Location", garage_location)}
+            {renderDetail("Bed and Bath Options", bed_bath_options)}
+            {renderDetail("Kitchen and Dining", kitchen_dinning)}
+            {renderDetail("Laundry Location", laundry_location)}
+            {renderDetail("Additional Rooms", additional_rooms)}
+            {renderDetail("Outdoor Features", outdoor_features)}
+            {renderDetail("Foundation", foundation)}
+            {renderDetail("Special Features", special_features)}
 
-      <Card variant="outlined" sx={{ marginBottom: 3 }}>
-        <CardContent>
-          <Typography variant="h5">Additional Features</Typography>
-          <Divider sx={{ marginY: 2 }} />
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Typography><strong>Footprint Width:</strong> {data.footprint_width} ft</Typography>
-              <Typography><strong>Footprint Depth:</strong> {data.footprint_depth} ft</Typography>
-              <Typography><strong>Footprint Height:</strong> {data.footprint_height} ft</Typography>
-              <Typography><strong>Garage Type:</strong> {data.garage_type.join(', ')}</Typography>
-              <Typography><strong>Garage Location:</strong> {data.garage_location.join(', ')}</Typography>
-              <Typography><strong>Bed & Bath Options:</strong> {data.bed_bath_options.join(', ')}</Typography>
-              <Typography><strong>Kitchen/Dining:</strong> {data.kitchen_dinning.join(', ')}</Typography>
-              <Typography><strong>Laundry Location:</strong> {data.laundry_location.join(', ')}</Typography>
-              <Typography><strong>Additional Rooms:</strong> {data.additional_rooms}</Typography>
-              <Typography><strong>Outdoor Features:</strong> {data.outdoor_features.join(', ')}</Typography>
-              <Typography><strong>Foundation:</strong> {data.foundation.join(', ')}</Typography>
-              <Typography><strong>Special Features:</strong> {data.special_features.join(', ')}</Typography>
+            <Grid item xs={12}>
+              <Typography variant="h6" gutterBottom mt={2}>
+                Lot Features and Collections
+              </Typography>
             </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+            {renderDetail("Lot Features", lot_features)}
+            {renderDetail("Collections", collections)}
 
-      <Card variant="outlined" sx={{ marginBottom: 3 }}>
-        <CardContent>
-          <Typography variant="h5">Lot Features & Collections</Typography>
-          <Divider sx={{ marginY: 2 }} />
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Typography><strong>Lot Features:</strong> {data.lot_features.join(', ')}</Typography>
-              <Typography><strong>Collections:</strong> {data.collections.join(', ')}</Typography>
+            <Grid item xs={12}>
+              <Typography variant="h6" gutterBottom mt={2}>
+                Pricing and Discounts
+              </Typography>
             </Grid>
+            {renderDetail("Price", price)}
+            {renderDetail("Initial Discount", initial_discount)}
           </Grid>
-        </CardContent>
-      </Card>
-
-      <Card variant="outlined">
-        <CardContent>
-          <Typography variant="h5">Pricing</Typography>
-          <Divider sx={{ marginY: 2 }} />
-          <Typography><strong>Price:</strong> {data.price}</Typography>
-          <Typography><strong>Initial Discount:</strong> {data.initial_discount}</Typography>
         </CardContent>
       </Card>
     </Container>
