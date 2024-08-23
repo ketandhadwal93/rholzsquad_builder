@@ -150,7 +150,6 @@ const PropertyFormEdit = () => {
 
     };
 
-
     const handleBack = () => {
         setShow(false)
         setActiveStep(activeStep - 1);
