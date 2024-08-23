@@ -140,7 +140,6 @@ const PropertyFormEdit = () => {
             setShow(false)
             let apiRes = await apiEndPoint.Property.editProperty(payload, id)
             console.log("edit property response", apiRes)
-
             if (apiRes?.status === 200) {
                 toast.success("Property updated successfully")
                 navigate('/property')
