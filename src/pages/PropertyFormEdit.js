@@ -61,7 +61,7 @@ const PropertyFormEdit = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const isLastStep = activeStep === steps.length - 1;
-    const [state, setState] = useState( {
+    const [state, setState] = useState({
         // FirstStep
         name: '',
         plan_style: "",
@@ -95,25 +95,25 @@ const PropertyFormEdit = () => {
         initial_discount: '',
     }
     );
-  
+
     const getPropertyApi = async () => {
-      try {
-        let apiRes = await apiEndPoint.Property.getById(id);
-        setState(apiRes?.data);
-      } catch (error) {
-        console.log("Error fetching property data", error);
-      }
+        try {
+            let apiRes = await apiEndPoint.Property.getById(id);
+            setState(apiRes?.data);
+        } catch (error) {
+            console.log("Error fetching property data", error);
+        }
     };
-  
+
     useEffect(() => {
-      getPropertyApi();
+        getPropertyApi();
     }, []);
 
 
 
 
-console.log("ffsdfsdfsdfsduuuuu",state)
-  
+    console.log("ffsdfsdfsdfsduuuuu", state)
+
 
     const getValidationSchema = () => {
         switch (activeStep) {
@@ -131,17 +131,18 @@ console.log("ffsdfsdfsdfsduuuuu",state)
     };
 
     const handleSubmit = async (values) => {
+        console.log("values", values)
         if (!isLastStep && values) {
             setActiveStep(activeStep + 1);
             setShow(false)
         } else {
-
-            const payload = {...values,  id :"id lgaooo"}
+            const payload = { ...values, id }
             setShow(false)
-            let apiRes = await apiEndPoint.Property.addProperty(values)
-            console.log("add property response", apiRes)
-            if (apiRes?.status == 200 || apiRes.data) {
-                toast.success("Property added successfully")
+            let apiRes = await apiEndPoint.Property.editProperty(payload, id)
+            console.log("edit property response", apiRes)
+
+            if (apiRes?.status === 200) {
+                toast.success("Property updated successfully")
                 navigate('/property')
             } else {
                 toast.error(apiRes?.message)
@@ -173,7 +174,7 @@ console.log("ffsdfsdfsdfsduuuuu",state)
             {show ?
                 <> <PreviewPage values={priviewData} handleEdit={handleEdit} /></> :
                 <Formik
-                    initialValues={ state|| initialValues}
+                    initialValues={state || initialValues}
                     enableReinitialize={true}
                     validationSchema={getValidationSchema()}
                     onSubmit={handleSubmit}
@@ -231,7 +232,7 @@ console.log("ffsdfsdfsdfsduuuuu",state)
                                             </Button>
                                             <Box sx={{ flex: '1 1 auto' }} />
 
-                                           
+
                                             <Button
                                                 variant="contained" color="primary"
                                                 // onClick={handleNext}
