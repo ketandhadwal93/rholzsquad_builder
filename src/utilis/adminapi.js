@@ -134,7 +134,7 @@ const FILES = {
     filename ? filename?.startsWith('http') ? filename : `${API_FILE_ROOT_SMALL}${filename}` : alt,
 };
 
-const apiEndPoint = {
+const adminEndPoint = {
   Auth,
   API_ROOT,
   API_FILE_ROOT_DB_BACKUP,
@@ -156,4 +156,4 @@ const apiEndPoint = {
   }
 };
 
-export default apiEndPoint;
+export default adminEndPoint;

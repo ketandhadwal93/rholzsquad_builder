@@ -6,17 +6,14 @@ import apiEndPoint from '../../utilis/adminapi';
 
 const FifthStep = ({ setFieldValue, values, touched, errors }) => {
   const handleImageChange = async (event, type) => {
-
     try {
-        const file = event.target.files[0];
-        const formData = new FormData();
-        formData.append('image', file);
-        let apiRes = await apiEndPoint.Common.uploadFile(formData);
-        console.log("fsdfsfsdffsdfs",apiRes)
-      } catch (error) {
-        console.error('Error uploading image:', error);
-      }
-
+      const file = event.target.files[0];
+      console.log("file", file)
+      let apiImageRes = await apiEndPoint.Common.uploadFile('file', file)
+      console.log("apiImageRes images", apiImageRes?.data?.file_url)
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
 
     const files = Array.from(event.target.files);
     const urls = files.map(file => URL.createObjectURL(file));

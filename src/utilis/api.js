@@ -3,6 +3,7 @@ const SuperagentPromise = require('superagent-promise');
 const superagent = SuperagentPromise(_superagent, global.Promise);
 
 const API_ROOT = "https://api.rholzsquad.com/builder/";
+const API_URL = "https://api.rholzsquad.com/"
 
 const BUCKET_ROOT = `https://demoprojectsbucket.sgp1.digitaloceanspaces.com/shared2/`;
 const DB_ROOT = `https://dreamgrant.s3.amazonaws.com/`;
@@ -37,7 +38,7 @@ const requests = {
   post: (url, body) =>
     superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
   file: (url, key, file) =>
-    superagent.post(`${API_ROOT}${url}`).attach(key, file).use(tokenPlugin).then(responseBody)
+    superagent.post(`${API_URL}${url}`).attach(key, file).use(tokenPlugin).then(responseBody)
 };
 
 const Auth = {
@@ -57,7 +58,7 @@ const Auth = {
 
 const Common = {
   uploadFile: (key, file) =>
-    requests.file('upload/file', key, file),
+    requests.file('admin/upload-file', key, file),
   uploadFileMultiple: (key, file) =>
     requests.file('Upload/do_spaces_file_upload_multiple', key, file),
   dbBackup: () =>

@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Grid, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import apiEndPoint from '../utilis/api';
+import adminEndPoint from '../utilis/adminapi';
 
-const ImageUploader = ({images,setImages}) => {
+const ImageUploader = ({ images, setImages }) => {
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
+    console.log("file", file)
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImages((prevImages) => [...prevImages, imageUrl]);
       const formData = new FormData();
       formData.append('image', file);
-
       try {
-        let apiRes = await apiEndPoint.Common.uploadFile(formData);
-        console.log("fsdfsfsdffsdfs",apiRes)
+        let apiImageRes = await apiEndPoint.Common.uploadFile('file', file)
+        console.log("images apiRes", apiImageRes)
       } catch (error) {
         console.error('Error uploading image:', error);
       }
@@ -25,6 +26,7 @@ const ImageUploader = ({images,setImages}) => {
   const handleRemoveImage = (index) => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
+
 
   return (
     <Box>
