@@ -52,7 +52,7 @@ const initialValues = {
     initial_discount: '',
     main_images: [],
     floor_images : [],
-    garage_images : []
+    // garage_images : []
   };
   
 
@@ -99,7 +99,7 @@ const PropertyFormEdit = () => {
       initial_discount: '',
       main_images: [],
       floor_images : [],
-      garage_images : []
+      // garage_images : []
 }
 );
 const getPropertyApi = async () => {

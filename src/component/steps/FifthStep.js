@@ -93,7 +93,7 @@ const FifthStep = ({ setFieldValue, values, touched, errors }) => {
     <div>
       {renderImageSection('Main Images', 'main_images')}
       {renderImageSection('Floor Images', 'floor_images')}
-      {renderImageSection('Garage Images', 'garage_images')}
+      {/* {renderImageSection('Garage Images', 'garage_images')} */}
     </div>
   );
 };

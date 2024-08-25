@@ -50,7 +50,7 @@ const initialValues = {
   initial_discount: '',
   main_images: [],
   floor_images : [],
-  garage_images : []
+  // garage_images : []
 };
 
 const PropertyForm = () => {
