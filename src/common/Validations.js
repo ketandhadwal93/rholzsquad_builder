@@ -45,3 +45,13 @@ export const step4ValidationSchema = Yup.object({
     price: Yup.string().required('Price is required'),
     initial_discount: Yup.string().required('Initial discount is required'),
 });
+
+
+export const step5ValidationSchema = Yup.object().shape({
+  main_images: Yup.array()
+    .min(1, 'At least one main image is required'),
+  floorImages: Yup.array()
+    .min(1, 'At least one floor image is required'),
+  garageImages: Yup.array()
+    .min(1, 'At least one garage image is required'),
+});

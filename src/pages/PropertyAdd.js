@@ -7,14 +7,14 @@ import FirstStep from '../component/steps/FirstStep';
 import SecondStep from '../component/steps/SecondStep';
 import ThirdStep from '../component/steps/ThirdStep';
 import FourthStep from '../component/steps/FourthStep';
-import { step1ValidationSchema, step2ValidationSchema, step3ValidationSchema, step4ValidationSchema } from '../common/Validations';
+import { step1ValidationSchema, step2ValidationSchema, step3ValidationSchema, step4ValidationSchema, step5ValidationSchema } from '../common/Validations';
 import PreviewPage from '../common/PreviewPage';
 import apiEndPoint from '../utilis/api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import ImageUploader from '../component/ImageUploader';
+import FifthStep from '../component/steps/FifthStep';
 
-const steps = ['Basic Information', 'Dimensions', 'Features', 'Pricing'];
+const steps = ['Basic Information', 'Dimensions', 'Features', 'Pricing', 'Images'];
 const initialValues = {
   // FirstStep
   name: '',
@@ -35,7 +35,7 @@ const initialValues = {
   bed_bath_options: "",
   kitchen_dinning: "",
   laundry_location: "",
-  
+
   outdoor_features: "",
 
   // third
@@ -48,6 +48,9 @@ const initialValues = {
   // forth
   price: '',
   initial_discount: '',
+  main_images: [],
+  floorImages: [],
+  garageImages: []
 };
 
 const PropertyForm = () => {
@@ -68,10 +71,13 @@ const PropertyForm = () => {
         return step3ValidationSchema;
       case 3:
         return step4ValidationSchema;
+      case 4:
+        return step5ValidationSchema;
       default:
         return Yup.object(); // Fallback schema if needed
     }
   };
+
 
   const handleSubmit = async (values) => {
     if (!isLastStep && values) {
@@ -112,7 +118,7 @@ const PropertyForm = () => {
           <Paper elevation={3} sx={{ p: 3, mt: 5 }}>
             <Formik
               initialValues={initialValues}
-              validationSchema={getValidationSchema()}
+              // validationSchema={getValidationSchema()}
               onSubmit={handleSubmit}
             >
               {({ setFieldValue, errors, touched, values }) => (
@@ -152,17 +158,24 @@ const PropertyForm = () => {
                         />
                       )}
                       {activeStep === 3 && (
-                        <>
-                         <FourthStep
+
+                        <FourthStep
                           setFieldValue={setFieldValue}
                           errors={errors}
                           touched={touched}
                           values={values}
                         />
 
-                        <ImageUploader setImages={setImages} images ={images}/>
-                        </>
-                       
+
+
+                      )}
+                      {activeStep === 4 && (
+                        <FifthStep
+                          setFieldValue={setFieldValue}
+                          values={values}
+                          errors={errors}
+                          touched={touched}
+                        />
                       )}
 
                       <Grid item xs={12}>
