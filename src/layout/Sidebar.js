@@ -20,9 +20,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, handleDrawerClose, handleDraw
       <List>
         {[
           { text: 'Dashboard', icon: <InboxIcon />, path: '/dashboard' },
-          { text: 'Property', icon: <MailIcon />, path: '/property' },
-          { text: 'Send email', icon: <InboxIcon />, path: '/send-email' },
-          { text: 'Drafts', icon: <MailIcon />, path: '/drafts' }
+          { text: 'Property', icon: <MailIcon />, path: '/property' }
         ].map(({ text, icon, path }, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton component={Link} to={path}>
@@ -35,22 +33,7 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, handleDrawerClose, handleDraw
         ))}
       </List>
       <Divider />
-      <List>
-        {[
-          { text: 'All mail', icon: <InboxIcon />, path: '/all-mail' },
-          { text: 'Trash', icon: <MailIcon />, path: '/trash' },
-          { text: 'Spam', icon: <InboxIcon />, path: '/spam' }
-        ].map(({ text, icon, path }, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton component={Link} to={path}>
-              <ListItemIcon>
-                {icon}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+    
       <List>
         <ListItem key={"Log Out"} disablePadding onClick={handleLogout}>
           <ListItemButton component={Link} to={'/'}>

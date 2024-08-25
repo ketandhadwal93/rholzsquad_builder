@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, Grid, Card, CardContent, Divider, Box, Button } from '@mui/material';
+import { Container, Typography, Grid, Card, CardContent, Divider, Box, Button, CircularProgress } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import apiEndPoint from '../utilis/api';
 import {
@@ -23,6 +23,7 @@ const PropertyDetailPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [state, setState] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const getPropertyApi = async () => {
     try {
@@ -30,6 +31,8 @@ const PropertyDetailPage = () => {
       setState(apiRes);
     } catch (error) {
       console.log("Error fetching property data", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,8 +44,22 @@ const PropertyDetailPage = () => {
     navigate(`/property/edit/${id}`);
   };
 
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="80vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   if (!state.data) {
-    return <Typography>Loading...</Typography>;
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="80vh">
+        <Typography variant="h6" color="textSecondary">
+          No Data Found
+        </Typography>
+      </Box>
+    );
   }
 
   const {
