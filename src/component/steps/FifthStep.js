@@ -7,22 +7,37 @@ import apiEndPoint from '../../utilis/adminapi';
 const FifthStep = ({ setFieldValue, values, touched, errors }) => {
   const handleImageChange = async (event, type) => {
     try {
-      const file = event.target.files[0];
-      console.log("file", file)
-      let apiImageRes = await apiEndPoint.Common.uploadFile('file', file)
-      console.log("apiImageRes images", apiImageRes?.data?.file_url)
+      const files = Array.from(event.target.files);
+      const urls = [];
+      const uploadedUrls = [];
+
+      for (const file of files) {
+        console.log("file", file);
+        let apiImageRes = await apiEndPoint.Common.uploadFile('file', file);
+        console.log("apiImageRes images", apiImageRes?.data?.file_url);
+        
+        if (apiImageRes?.status === 200 && apiImageRes.data?.file_url) {
+          // Store the uploaded image URL
+          uploadedUrls.push(apiImageRes.data.file_url);
+        } else {
+          console.error('Error uploading image:', apiImageRes?.message);
+        }
+
+        // Generate local preview URL
+        const url = URL.createObjectURL(file);
+        urls.push(url);
+      }
+
+      // Update the form field with both uploaded URLs and local preview URLs
+      setFieldValue(type, [...values[type], ...uploadedUrls]);
+
+      // Optionally, if you want to keep the preview URLs as well, you can do:
+      // setFieldValue(type, [...values[type], ...uploadedUrls, ...urls]);
+
     } catch (error) {
       console.error('Error uploading image:', error);
     }
-
-    const files = Array.from(event.target.files);
-    const urls = files.map(file => URL.createObjectURL(file));
-    setFieldValue(type, [...values[type], ...urls]);
   };
-
-
-
-
 
   const handleRemoveImage = (index, type) => {
     setFieldValue(type, values[type].filter((_, i) => i !== index));
@@ -72,8 +87,8 @@ const FifthStep = ({ setFieldValue, values, touched, errors }) => {
   return (
     <div>
       {renderImageSection('Main Images', 'main_images')}
-      {renderImageSection('Floor Images', 'floorImages')}
-      {renderImageSection('Garage Images', 'garageImages')}
+      {renderImageSection('Floor Images', 'floor_images')}
+      {renderImageSection('Garage Images', 'garage_images')}
     </div>
   );
 };

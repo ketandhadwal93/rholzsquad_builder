@@ -50,8 +50,9 @@ export const step4ValidationSchema = Yup.object({
 export const step5ValidationSchema = Yup.object().shape({
   main_images: Yup.array()
     .min(1, 'At least one main image is required'),
-  floorImages: Yup.array()
+    floor_images: Yup.array()
     .min(1, 'At least one floor image is required'),
-  garageImages: Yup.array()
+    garage_images: Yup.array()
     .min(1, 'At least one garage image is required'),
 });
+

@@ -49,8 +49,8 @@ const initialValues = {
   price: '',
   initial_discount: '',
   main_images: [],
-  floorImages: [],
-  garageImages: []
+  floor_images : [],
+  garage_images : []
 };
 
 const PropertyForm = () => {
@@ -118,7 +118,7 @@ const PropertyForm = () => {
           <Paper elevation={3} sx={{ p: 3, mt: 5 }}>
             <Formik
               initialValues={initialValues}
-              // validationSchema={getValidationSchema()}
+              validationSchema={getValidationSchema()}
               onSubmit={handleSubmit}
             >
               {({ setFieldValue, errors, touched, values }) => (
