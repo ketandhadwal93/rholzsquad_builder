@@ -124,6 +124,20 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
             <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
                     <TextField
+                        name="additional_rooms"
+                        label="Additional Rooms"
+                        type="number"
+                        variant="outlined"
+                        value={values.additional_rooms}
+                        onChange={(e) => setFieldValue('additional_rooms', e.target.value)}
+                        error={touched.additional_rooms && Boolean(errors.additional_rooms)}
+                        helperText={<ErrorMessage name="additional_rooms" />}
+                    />
+                </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <FormControl fullWidth margin="normal">
+                    <TextField
                         name="cars"
                         label="Cars"
                         type="number"

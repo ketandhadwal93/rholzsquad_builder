@@ -48,29 +48,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     />
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <InputLabel id="garage_type-label">Garage Type</InputLabel>
-                    <Select
-                        labelId="garage_type-label"
-                        name="garage_type"
-                        id="garage_type-select"
-                        label="Garage Type"
-                        
-                        value={values.garage_type}
-                        onChange={(e) => setFieldValue('garage_type', e.target.value)}
-                        error={touched.garage_type && Boolean(errors.garage_type)}
-                    >
-                        {garage_type_Select_data.map((ele, index) => {
-                            return (
-                                <MenuItem value={ele.value} key={index}>{ele.label}</MenuItem>
-                            )
-                        })}
-
-                    </Select>
-                    <ErrorMessage name="garage_type" component="div" />
-                </FormControl>
-            </Grid>
+          
 
             <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
@@ -85,31 +63,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     />
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <InputLabel id="garage_location-label">Garage Location</InputLabel>
-                    <Select
-                        labelId="garage_location-label"
-                        name="garage_location"
-                        id="garage_location-select"
-                        label="Garage Location"
-                        
-                        value={values.garage_location}
-                        onChange={(e) => setFieldValue('garage_location', e.target.value)}
-                        error={touched.garage_location && Boolean(errors.garage_location)}
-                    >
-
-                        {garage_location_Select_data.map((ele, index) => {
-                            return (
-                                <MenuItem value={ele.value} key={index}>{ele.label}</MenuItem>
-                            )
-                        })}
-
-
-                    </Select>
-                    <ErrorMessage name="garage_location" component="div" />
-                </FormControl>
-            </Grid>
+          
             <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="bed_bath_options-label">Bed/Bath Options</InputLabel>
@@ -183,20 +137,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     <ErrorMessage name="laundry_location" component="div" />
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <TextField
-                        name="additional_rooms"
-                        label="Additional Rooms"
-                        type="number"
-                        variant="outlined"
-                        value={values.additional_rooms}
-                        onChange={(e) => setFieldValue('additional_rooms', e.target.value)}
-                        error={touched.additional_rooms && Boolean(errors.additional_rooms)}
-                        helperText={<ErrorMessage name="additional_rooms" />}
-                    />
-                </FormControl>
-            </Grid>
+         
             <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="outdoor_features-label">Outdoor Features</InputLabel>
@@ -221,52 +162,7 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     <ErrorMessage name="outdoor_features" component="div" />
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <InputLabel id="foundation-label">Foundation</InputLabel>
-                    <Select
-                        labelId="foundation-label"
-                        name="foundation"
-                        id="foundation-select"
-                        label="Foundation"
-                        
-                        value={values.foundation}
-                        onChange={(e) => setFieldValue('foundation', e.target.value)}
-                        error={touched.foundation && Boolean(errors.foundation)}
-                    >
-                        {foundation_Select_data.map((ele, index) => {
-                            return (
-                                <MenuItem value={ele.value} key={index}>{ele.label}</MenuItem>
-                            )
-                        })}
-                    </Select>
-                    <ErrorMessage name="foundation" component="div" />
-                </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <InputLabel id="special_features-label">Special Features</InputLabel>
-                    <Select
-                        labelId="special_features-label"
-                        name="special_features"
-                        id="special_features-select"
-                        label="Special Features"
-                        
-                        value={values.special_features}
-                        onChange={(e) => setFieldValue('special_features', e.target.value)}
-                        error={touched.special_features && Boolean(errors.special_features)}
-                    >
-
-                        {special_features_Select_data.map((ele, index) => {
-                            return (
-                                <MenuItem value={ele.value} key={index}>{ele.label}</MenuItem>
-                            )
-                        })}
-
-                    </Select>
-                    <ErrorMessage name="special_features" component="div" />
-                </FormControl>
-            </Grid>
+           
             {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="exterior_walls-label">Exterior Walls</InputLabel>

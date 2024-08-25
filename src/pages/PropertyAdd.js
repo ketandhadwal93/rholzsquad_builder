@@ -12,6 +12,7 @@ import PreviewPage from '../common/PreviewPage';
 import apiEndPoint from '../utilis/api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import ImageUploader from '../component/ImageUploader';
 
 const steps = ['Basic Information', 'Dimensions', 'Features', 'Pricing'];
 const initialValues = {
@@ -25,29 +26,32 @@ const initialValues = {
   cars: "",
   story: "",
   no_of_vehicles: "",
+  additional_rooms: "",
   // second
   footprint_width: "",
   sq_ft: '',
   footprint_depth: "",
   footprint_height: "",
-  garage_type: "",
-  garage_location: "",
   bed_bath_options: "",
   kitchen_dinning: "",
   laundry_location: "",
-  additional_rooms: "",
+  
   outdoor_features: "",
-  foundation: "",
-  special_features: "",
+
   // third
   lot_features: "",
   collections: "",
+  garage_type: "",
+  special_features: "",
+  foundation: "",
+  garage_location: "",
   // forth
   price: '',
   initial_discount: '',
 };
 
 const PropertyForm = () => {
+  const [images, setImages] = useState([]);
   const [activeStep, setActiveStep] = useState(0);
   const [previewData, setPreviewData] = useState(null);
   const [show, setShow] = useState(false);
@@ -148,12 +152,17 @@ const PropertyForm = () => {
                         />
                       )}
                       {activeStep === 3 && (
-                        <FourthStep
+                        <>
+                         <FourthStep
                           setFieldValue={setFieldValue}
                           errors={errors}
                           touched={touched}
                           values={values}
                         />
+
+                        <ImageUploader setImages={setImages} images ={images}/>
+                        </>
+                       
                       )}
 
                       <Grid item xs={12}>
