@@ -4,7 +4,7 @@ import { Box, Toolbar, Divider, List, ListItem, ListItemButton, ListItemIcon, Li
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Logout } from '@mui/icons-material';
-
+import imageUrl from "../assets/builderlogo.png";
 const drawerWidth = 240;
 
 const Sidebar = ({ mobileOpen, handleDrawerToggle, handleDrawerClose, handleDrawerTransitionEnd, container }) => {
@@ -15,6 +15,9 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle, handleDrawerClose, handleDraw
 
   const drawer = (
     <div>
+      <div style={{width:"88%" ,height:"97px" ,marginLeft:"35px"}}>
+     <img src={imageUrl} alt='img'  />
+      </div>
       <Toolbar />
       <Divider />
       <List>

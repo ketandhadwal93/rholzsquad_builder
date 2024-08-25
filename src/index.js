@@ -11,10 +11,10 @@ import { TokenProvider } from './context/tokenContext';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ff9800', // Custom primary color (orange)
+      main: '#f4652f', // Custom primary color (orange)
     },
     secondary: {
-      main: '#ff5722', // Custom secondary color (deep orange)
+      main: '#f4652f', // Custom secondary color (deep orange)
     },
     background: {
       default: '#fff3e0', // Custom background color (light orange)
