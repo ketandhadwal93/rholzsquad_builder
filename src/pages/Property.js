@@ -37,7 +37,7 @@ const PropertyPage = () => {
                 <PropertyCard
                   title={res?.name}
                   price={res?.price}
-                  image={imageUrl}
+                  image={res?.main_images[0]}
                   id={res?._id}
                 />
               </Grid>

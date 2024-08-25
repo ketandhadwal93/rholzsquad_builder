@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import apiEndPoint from '../../utilis/adminapi';
 
 const FifthStep = ({ setFieldValue, values, touched, errors }) => {
+  console.log("dsfsdsdfsdfvalues",values["main_images"])
   const handleImageChange = async (event, type) => {
     try {
       const files = Array.from(event.target.files);
@@ -62,8 +63,10 @@ const FifthStep = ({ setFieldValue, values, touched, errors }) => {
             <FormHelperText error>{errors[name]}</FormHelperText>
           )}
           <Grid container spacing={2}>
-            {values[name].map((image, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4} position="relative">
+            { values[name] && values[name].length > 0 &&  values[name].map((image, index)=>{
+              return(
+                <>
+                   <Grid item key={index} xs={12} sm={6} md={4} position="relative">
                 <img
                   src={image}
                   alt={`${label} Preview ${index + 1}`}
@@ -77,7 +80,9 @@ const FifthStep = ({ setFieldValue, values, touched, errors }) => {
                   <CloseIcon fontSize="small" />
                 </IconButton>
               </Grid>
-            ))}
+                </>
+              )
+            })}
           </Grid>
         </Box>
       )}
