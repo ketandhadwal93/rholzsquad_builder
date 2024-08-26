@@ -109,7 +109,7 @@ function LoginForm() {
           <Grid container>
             <Grid item xs>
               <Typography variant="body2">
-                Forgot password?
+                {/* Forgot password? */}
               </Typography>
             </Grid>
             <Grid item>
