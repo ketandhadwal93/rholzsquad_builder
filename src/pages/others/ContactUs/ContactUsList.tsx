@@ -368,7 +368,7 @@ const fetchContactUsData = async () => {
                 selectfeils={selectfeils}      // Pass file selections
                 setSelectfeils={setSelectfeils} // Pass function to set files
                 editagent={editagent} 
-                fetchContactUsData={fetchContactUsData}         // Pass flag for edit mode
+                fetchContactUsData={fetchContactUsData}         // Pass flfag for edit mode
             />
 
             {/* <Modal show={addagent} onHide={handleCloseAgent}>
