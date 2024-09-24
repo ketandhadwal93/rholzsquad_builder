@@ -25,6 +25,7 @@ import AddAgentModal from "./AddUserModal";
 import ApiService from "serviceArchitecture/services/apiservice";
 import ActionModal from "serviceArchitecture/components/modals/VerificationModal";
 import AddUserModal from "./AddUserModal";
+import { L } from "@fullcalendar/list/internal-common";
 const ContactUsList = () => {
 
     document.title = "Agent List | Steex - Admin & Dashboard Template";
@@ -111,7 +112,7 @@ const fetchContactUsData = async () => {
             const params = { limit: 100 }; // Define your params object with limit
 
           const response = await ApiService.getContactUsList(params); // Fetch dashboard data
-          setBuilders(response.data);
+          setListView(response.data);
         } catch (err: any) {
           setError(err.message);
         }
@@ -332,7 +333,7 @@ const fetchContactUsData = async () => {
                                             <TableContainer
                                                 isPagination={true}
                                                 columns={column}
-                                                data={builders || []}
+                                                data={listView || {}}
                                                 tableClass="table-borderless table-centered align-middle table-nowrap mb-0"
                                                 theadClass="text-muted table-light"
                                                 PaginationClassName="mt-3 align-items-center"

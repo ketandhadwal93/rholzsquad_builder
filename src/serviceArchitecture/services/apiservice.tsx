@@ -78,18 +78,46 @@ const ApiService = {
 
 
 
+      GetPropertieslist: async (params: any = {}) => {
+        try {
+          const response = await apiClient.get('/plan-style', params);  // Replace '/dashboard/data' with the actual endpoint
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to fetch dashboard data: ${error}`);
+        }
+      },
 
 
 
+      addProperty : async (data:any) => {
+        try{
+        const response = await apiClient.create('/plan-style', data)
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to create user: ${error}`);
+        }
+      },
 
 
 
+      updateProperty: async (id: any, data: any) => {
+        try {
+          const response = await apiClient.put(`/plan-style/${id}`,  data );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
 
 
-
-
-
-
+      deleteProperty: async (id: any, ) => {
+        try {
+          const response = await apiClient.delete(`/plan-style/${id}`,  '' );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
 
 
 

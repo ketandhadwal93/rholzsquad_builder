@@ -14,7 +14,7 @@ export const DeleteModal = ({ show, handleClose, deleteModalFunction }: any) => 
                         </div>
                         <div className="mt-4">
                             <h4>Are you sure ?</h4>
-                            <p className="text-muted mx-4 mb-0">Are you sure you want to remove this product ?</p>
+                            <p className="text-muted mx-4 mb-0">Are you sure you want to Delete ?</p>
                         </div>
                     </div>
                     <div className="d-flex gap-2 justify-content-center mt-4 mb-2">

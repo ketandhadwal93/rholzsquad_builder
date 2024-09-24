@@ -998,6 +998,12 @@ const Navdata = () => {
                 link: "/apps-real-estate-agent-list-view",
             },
             {
+                id: "properties",
+                label: "Properties",
+                icon:" ph-house",
+                link: "/apps-real-estate-grid",
+            },
+            {
                 id: "users",
                 icon:" ph-users-three",
                 label: "Users",
