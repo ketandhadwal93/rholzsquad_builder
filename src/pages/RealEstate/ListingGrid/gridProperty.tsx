@@ -559,18 +559,21 @@ const GridProperty = ({ data ,fetchPropertiesData}: any) => {
     };
 
  
+    const [loading, setLoading] = useState<boolean>(false); // Loading state
 
     const handleDeleteShow = (ele: any) => { setShow(true); setRealestategrid(ele) };
     const handleDeleteClose = () => setShow(false);
 
     //delete modal
     const deleteModalFunction = async() => {
-        alert(realestategrid.id)
-        if (realestategrid.id) {
+        if (realestategrid._id) {
             // dispatch(onDeleteRealEstateGridList(realestategrid.id));
             try {
-                await ApiService.deleteProperty(realestategrid.id);
+                await ApiService.deleteProperty(realestategrid._id);
                 console.log("Item deleted successfully");
+                if(fetchPropertiesData){
+                    fetchPropertiesData()
+                }
                 setShow(false);
             } catch (error) {
                 console.error("Failed to delete item", error);
@@ -606,7 +609,7 @@ const GridProperty = ({ data ,fetchPropertiesData}: any) => {
         }),
         onSubmit: async (values: any) => {
 console.log(realestategrid,)
-
+setLoading(true);
             try {
                 let imageUrl = values.img; // Default to the current image
     
@@ -639,6 +642,8 @@ console.log(realestategrid,)
             } catch (error) {
                 console.error("Failed to update property:", error);
                 // Handle error (e.g., show a toastr message)
+            }finally {
+                setLoading(false); // Reset loading state after completion
             }
         }
     
@@ -833,7 +838,7 @@ console.log(realestategrid,)
                     <Modal.Footer>
                         <div className="hstack gap-2 justify-content-end">
                             <Button className="btn btn-ghost-danger" onClick={handleEditClose}> <i className="bi bi-x-lg align-baseline me-1"></i> Close </Button>
-                            <Button variant="primary" type="submit" id="add-btn"> Update </Button>
+                            <Button variant="primary" disabled ={loading}  type="submit" id="add-btn">{loading ? 'Updating Property...' : 'Update'} </Button>
                         </div>
                     </Modal.Footer>
                 </Form>

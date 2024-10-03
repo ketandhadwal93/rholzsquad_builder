@@ -32,11 +32,11 @@ import { Modal, Button } from "react-bootstrap";
 
 const ActionModal = ({ show, handleClose, builder, handleAction }:any) => {
     const handleVerify = () => {
-        handleAction(builder.id, 1); // Pass 1 for verification
+        handleAction(builder, 1); // Pass 1 for verification
       };
     
       const handleReject = () => {
-        handleAction(builder.id, 2); // Pass 2 for rejection
+        handleAction(builder, 2); // Pass 2 for rejection
       };
   return (
     <Modal show={show} onHide={handleClose}>

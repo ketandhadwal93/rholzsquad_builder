@@ -123,14 +123,14 @@ const fetchContactUsData = async () => {
     
       const handleActionShow = (builder: any) => {
         console.log(builder)    
-        setBuilder(builder);
+        setBuilder(builder?.row?.original?._id);
         setShowActionModal(true);
       };
       const handleActionClose = () => setShowActionModal(false);
     
       const handleAction = async (id: number, status: string) => {
         try {
-          await ApiService.updateBuilderStatus(id, status);
+          await ApiService.updateContactUsList(id, status);
           setBuilders(builders.map(b => (b.id === id ? { ...b, status } : b)));
           setShowActionModal(false);
         } catch (err: any) {

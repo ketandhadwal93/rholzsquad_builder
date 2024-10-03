@@ -203,6 +203,7 @@ import UserProfile from "pages/Authentication/user-profile";
 import UserList from "pages/RealEstate/users/UserList";
 import ContactUsList from "pages/others/ContactUs/ContactUsList";
 import Blogs from "pages/others/blog/blog";
+import ContentPage from "pages/Pages/Content/ContentPage";
 
 const authProtectedRoutes = [
     // Dashboard
@@ -272,6 +273,7 @@ const authProtectedRoutes = [
     // other routes newly created
     { path: "/other-pages-contact-us-list", name : "ContactUsList" ,component: <ContactUsList /> },
     { path: "/other-pages-blogs-list", name : "blogpage" ,component: <Blogs /> },
+    { path: "/other-pages-content", name : "content" ,component: <ContentPage /> },
 
 
 

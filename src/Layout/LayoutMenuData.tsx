@@ -1036,6 +1036,11 @@ const Navdata = () => {
                         label: "Contact Us List",
                         link: "/other-pages-contact-us-list",
                     },
+                    {
+                        id: "content",
+                        label: "Content",
+                        link: "/other-pages-content",
+                    },
                 ],
             },
         ];

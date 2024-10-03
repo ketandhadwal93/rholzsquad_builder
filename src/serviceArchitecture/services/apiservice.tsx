@@ -66,6 +66,56 @@ const ApiService = {
         }
       },
 
+      addFaq : async (data:any) => {
+        try{
+        const response = await apiClient.create('/faq', data)
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to create user: ${error}`);
+        }
+      },
+      updateFaq: async (id: any, data: any) => {
+        try {
+          const response = await apiClient.put(`/faq/${id}`,  data );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
+      deleteFaq: async (id: any, ) => {
+        try {
+          const response = await apiClient.delete(`/faq/${id}`,  '' );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
+
+      getBlogList: async (params: any = {}) => {
+        try {
+          const response = await apiClient.get('/blog', params);  // Replace '/dashboard/data' with the actual endpoint
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to fetch dashboard data: ${error}`);
+        }
+      },
+
+      addBlog : async (data:any) => {
+        try{
+        const response = await apiClient.create('/blog', data)
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to create user: ${error}`);
+        }
+      },
+      updateblog: async (id: any, data: any) => {
+        try {
+          const response = await apiClient.put(`/blog/${id}`,  data );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
 
       getContactUsList: async (params: any = {}) => {
         try {
@@ -75,7 +125,14 @@ const ApiService = {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
         }
       },
-
+      updateContactUsList: async (id: number, status: string) => {
+        try {
+          const response = await apiClient.update(`/contact-us/${id}`, { status });
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
 
 
       GetPropertieslist: async (params: any = {}) => {
@@ -121,15 +178,47 @@ const ApiService = {
 
 
 
+      deleteBlog: async (id: any, ) => {
+        try {
+          const response = await apiClient.delete(`/blog/${id}`,  '' );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update blog status: ${error}`);
+        }
+      },
 
 
+      
+      getContentList: async (params: any = {}) => {
+        try {
+          const response = await apiClient.get('/content', params);  // Replace '/dashboard/data' with the actual endpoint
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to fetch dashboard data: ${error}`);
+        }
+      },
+
+      
 
 
-
-
-
-
-
+      createContent : async (data:any) => {
+        try{
+        const response = await apiClient.create('/content', data)
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to create user: ${error}`);
+        }
+      },
+      updateContent: async (id: any, data: any) => {
+        try {
+          const response = await apiClient.put(`/content/${id}`,  data );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
+      
+     
 
       uploadImage : async (data:any) => {
         try{
