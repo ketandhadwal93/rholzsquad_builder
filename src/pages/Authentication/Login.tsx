@@ -8,6 +8,8 @@ import { useFormik } from "formik";
 
 // Import AuthService
 import AuthService from '../../serviceArchitecture/services/authservice';
+// import toast  from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Signin = (props: any) => {
     const [userLogin, setUserLogin] = useState<any>([]);
@@ -27,8 +29,8 @@ const Signin = (props: any) => {
     const validation = useFormik({
         enableReinitialize: true,
         initialValues: {
-            email: userLogin.email || "admin@rholzsquad.com" || '',
-            password: userLogin.password || "qwerty" || '',
+            email: userLogin.email || "john@yopmail.com" || '',
+            password: userLogin.password || "123456" || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),
@@ -40,7 +42,11 @@ const Signin = (props: any) => {
                 // Use AuthService for login
                 const response = await AuthService.login(values.email, values.password);
                 console.log("Login successful", response);
-                localStorage.setItem("authUser", JSON.stringify(response.data));
+                if(response.token !== undefined){
+
+                    localStorage.setItem("authUser", JSON.stringify(response.token));
+                }
+                toast.info(response.message);
                 // Navigate to dashboard or another page after successful login
                 props.router.navigate("/dashboard-real-estate");
             } catch (error: any) {
@@ -83,7 +89,7 @@ const Signin = (props: any) => {
                         <Card.Body className="p-sm-5 m-lg-4">
                             <div className="text-center mt-5">
                                 <h5 className="fs-3xl">Welcome Back</h5>
-                                <p className="text-muted">Sign in to continue to Rholzsquad Admin.</p>
+                                <p className="text-muted">Sign in to continue to Rholzsquad Builder.</p>
                             </div>
                             <div className="p-2 mt-5">
                                 {errorMsg ? (<Alert variant="danger">{errorMsg}</Alert>) : null}

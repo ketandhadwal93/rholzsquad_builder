@@ -1,6 +1,7 @@
 // import { env } from "process";
 
-import { APIClient, setAuthorization, getLoggedinUser  } from '../../helpers/api_helper';
+import  { APIClient, setAuthorization, getLoggedinUser  } from '../../helpers/api_helper';
+import axios from 'axios';
 
 const apiClient = new APIClient();
 
@@ -11,12 +12,13 @@ if (loggedInUser && loggedInUser.token) {
   console.log(loggedInUser.token);
 }
 
+const BASE_URL2 = `${process.env.REACT_APP_API_URL2}`;
 
 const ApiService = {
  
     getDashboardData: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/dashboard', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/dashboard', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -25,7 +27,7 @@ const ApiService = {
      
       getBuilderList: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/builders', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/builders', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -34,7 +36,7 @@ const ApiService = {
 
        addBuilder : async (data:any) => {
         try{
-        const response = await apiClient.create('/builder', data)
+        const response = await apiClient.create('builder/builder', data)
           return response;
         } catch (error) {
           throw new Error(`Failed to create user: ${error}`);
@@ -42,7 +44,7 @@ const ApiService = {
       },
       updateBuilderStatus: async (id: number, status: string) => {
         try {
-          const response = await apiClient.update(`/builders/${id}`, { status });
+          const response = await apiClient.update(`builder/builders/${id}`, { status });
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -51,7 +53,7 @@ const ApiService = {
 
       getUsersList: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/users', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/users', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -59,7 +61,7 @@ const ApiService = {
       },
       getFaqList: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/faq', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/faq', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -68,7 +70,7 @@ const ApiService = {
 
       addFaq : async (data:any) => {
         try{
-        const response = await apiClient.create('/faq', data)
+        const response = await apiClient.create('builder/faq', data)
           return response;
         } catch (error) {
           throw new Error(`Failed to create user: ${error}`);
@@ -76,7 +78,7 @@ const ApiService = {
       },
       updateFaq: async (id: any, data: any) => {
         try {
-          const response = await apiClient.put(`/faq/${id}`,  data );
+          const response = await apiClient.put(`builder/faq/${id}`,  data );
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -84,7 +86,7 @@ const ApiService = {
       },
       deleteFaq: async (id: any, ) => {
         try {
-          const response = await apiClient.delete(`/faq/${id}`,  '' );
+          const response = await apiClient.delete(`builder/faq/${id}`,  '' );
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -93,7 +95,7 @@ const ApiService = {
 
       getBlogList: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/blog', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/blog', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -102,7 +104,7 @@ const ApiService = {
 
       addBlog : async (data:any) => {
         try{
-        const response = await apiClient.create('/blog', data)
+        const response = await apiClient.create('builder/blog', data)
           return response;
         } catch (error) {
           throw new Error(`Failed to create user: ${error}`);
@@ -110,7 +112,7 @@ const ApiService = {
       },
       updateblog: async (id: any, data: any) => {
         try {
-          const response = await apiClient.put(`/blog/${id}`,  data );
+          const response = await apiClient.put(`builder/blog/${id}`,  data );
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -119,7 +121,7 @@ const ApiService = {
 
       getContactUsList: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/contact-us', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/contact-us', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -127,7 +129,7 @@ const ApiService = {
       },
       updateContactUsList: async (id: number, status: string) => {
         try {
-          const response = await apiClient.update(`/contact-us/${id}`, { status });
+          const response = await apiClient.update(`builder/contact-us/${id}`, { status });
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -137,7 +139,7 @@ const ApiService = {
 
       GetPropertieslist: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/plan-style', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/property', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -148,7 +150,7 @@ const ApiService = {
 
       addProperty : async (data:any) => {
         try{
-        const response = await apiClient.create('/plan-style', data)
+        const response = await apiClient.create('builder/property', data)
           return response;
         } catch (error) {
           throw new Error(`Failed to create user: ${error}`);
@@ -159,7 +161,7 @@ const ApiService = {
 
       updateProperty: async (id: any, data: any) => {
         try {
-          const response = await apiClient.put(`/plan-style/${id}`,  data );
+          const response = await apiClient.put(`builder/plan-style/${id}`,  data );
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -169,7 +171,7 @@ const ApiService = {
 
       deleteProperty: async (id: any, ) => {
         try {
-          const response = await apiClient.delete(`/plan-style/${id}`,  '' );
+          const response = await apiClient.delete(`builder/plan-style/${id}`,  '' );
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -180,7 +182,7 @@ const ApiService = {
 
       deleteBlog: async (id: any, ) => {
         try {
-          const response = await apiClient.delete(`/blog/${id}`,  '' );
+          const response = await apiClient.delete(`builder/blog/${id}`,  '' );
           return response;
         } catch (error) {
           throw new Error(`Failed to update blog status: ${error}`);
@@ -191,7 +193,7 @@ const ApiService = {
       
       getContentList: async (params: any = {}) => {
         try {
-          const response = await apiClient.get('/content', params);  // Replace '/dashboard/data' with the actual endpoint
+          const response = await apiClient.get('builder/content', params);  // Replace '/dashboard/data' with the actual endpoint
           return response;
         } catch (error) {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
@@ -203,7 +205,7 @@ const ApiService = {
 
       createContent : async (data:any) => {
         try{
-        const response = await apiClient.create('/content', data)
+        const response = await apiClient.create('builder/content', data)
           return response;
         } catch (error) {
           throw new Error(`Failed to create user: ${error}`);
@@ -211,7 +213,7 @@ const ApiService = {
       },
       updateContent: async (id: any, data: any) => {
         try {
-          const response = await apiClient.put(`/content/${id}`,  data );
+          const response = await apiClient.put(`builder/content/${id}`,  data );
           return response;
         } catch (error) {
           throw new Error(`Failed to update builder status: ${error}`);
@@ -222,11 +224,32 @@ const ApiService = {
 
       uploadImage : async (data:any) => {
         try{
-        const response = await apiClient.create('/upload-file', data,true)
+        const response = await apiClient.create('admin/upload-file', data,true)
           return response;
         } catch (error) {
           throw new Error(`Failed to create user: ${error}`);
         }
       },
+    
+    
+  
+      getpropertybyid: async (id: any, ) => {
+        try {
+          const response = await apiClient.get(`builder/property/${id}`,  '' );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
+      editPropertybyidbuilder: async (data: any, id: any) => {
+        try {
+          const response = await apiClient.put(`builder/property/${id}`,  data );
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to update builder status: ${error}`);
+        }
+      },
+      
+      
 };
 export default ApiService;

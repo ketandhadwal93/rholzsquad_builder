@@ -12,9 +12,11 @@
     import { createSelector } from "reselect";
 import AddPropertyModal from "./AddPropertyModal.tsx/AddPropertyModal";
 import ApiService from "serviceArchitecture/services/apiservice";
+import { useLocation, useNavigate } from 'react-router-dom';
 
     const ListingGrid = () => {
         document.title = "Properties  | Rohlzsquad - Admin ";
+        const navigate = useNavigate();
 
         const selectRealEstateGridList = createSelector(
             (state: any) => state.RealEstate,
@@ -76,7 +78,7 @@ import ApiService from "serviceArchitecture/services/apiservice";
                                                 </Card.Title>
                                             </Col>
                                             <div className="col-sm-auto ms-auto d-flex gap-1">
-                                                <Button variant="secondary" onClick={handleShowProperty}><i className="bi bi-house align-baseline me-1"></i> Add Property</Button>
+                                                <Button variant="secondary"  onClick={() => navigate('/apps-real-estate-add-property')} ><i className="bi bi-house align-baseline me-1"></i> Add Property</Button>
                                                 {/* <Button variant="primary" className="myButton" onClick={handlefileter}><i className="bi bi-funnel align-baseline me-1"></i> Filter</Button> */}
                                             </div>
                                         </Row>

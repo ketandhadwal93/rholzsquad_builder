@@ -991,24 +991,24 @@ const Navdata = () => {
                 icon: "ph-gauge",
 
             },
-            {
-                id: "builder",
-                label: "Builder",
-                icon:" ph-user",
-                link: "/apps-real-estate-agent-list-view",
-            },
+            // {
+            //     id: "builder",
+            //     label: "Builder",
+            //     icon:" ph-user",
+            //     link: "/apps-real-estate-agent-list-view",
+            // },
             {
                 id: "properties",
                 label: "Properties",
                 icon:" ph-house",
                 link: "/apps-real-estate-grid",
             },
-            {
-                id: "users",
-                icon:" ph-users-three",
-                label: "Users",
-                link: "/apps-real-estate-user-list-view",
-            },
+            // {
+            //     id: "users",
+            //     icon:" ph-users-three",
+            //     label: "Users",
+            //     link: "/apps-real-estate-user-list-view",
+            // },
             {
                 id: "others",
                 label: "Others",

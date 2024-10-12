@@ -204,6 +204,9 @@ import UserList from "pages/RealEstate/users/UserList";
 import ContactUsList from "pages/others/ContactUs/ContactUsList";
 import Blogs from "pages/others/blog/blog";
 import ContentPage from "pages/Pages/Content/ContentPage";
+import PropertyAdd from "../pages/RealEstate/properyAdd/PropertyAdd";
+import PropertyDetailPage from "../pages/RealEstate/ListingGrid/PropertyDetailPage";
+import PropertyFormEdit from "../pages/RealEstate/properyAdd/PropertyFormEdit";
 
 const authProtectedRoutes = [
     // Dashboard
@@ -257,6 +260,11 @@ const authProtectedRoutes = [
     { path: "/apps-tickets-list", name : "ListViewTickets" ,component: <ListViewTickets /> },
 
     { path: "/apps-real-estate-grid", name : "ListingGrid" ,component: <ListingGrid /> },
+    { path: "/apps-real-estate-add-property", name : "ListingGrid" ,component: <PropertyAdd /> },
+    { path: "/apps-real-estate-property-detail/:id", name : "propertydetail" ,component: <PropertyDetailPage /> },
+    { path: "/apps-real-estate-property-edit/:id", name : "propertydetail" ,component: <PropertyFormEdit /> },
+
+
     { path: "/apps-real-estate-list", name : "ListingList" ,component: <ListingList /> },
     { path: "/apps-real-estate-map", name : "ListingMap" ,component: <ListingMap /> },
     { path: "/apps-real-estate-agent-list-view", name : "AgentList" ,component: <AgentList /> },
@@ -544,7 +552,7 @@ const publicRoutes = [
 
     // Authentication Inner
     // Sign in
-    { path: "/auth-signin", name : "Signin" ,component: <Signin /> },
+    { path: "/auth-signin", name : "Signin" ,component: <Login /> },
 
     // Sign up
     { path: "/auth-signup", name : "SignUp" ,component: <SignUp /> },

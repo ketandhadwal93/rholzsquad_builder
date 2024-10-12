@@ -9,6 +9,8 @@
     "@ckeditor/ckeditor5-react": "^6.2.0",
     "@ckeditor/ckeditor5-utils": "^40.1.0",
     "@ckeditor/ckeditor5-watchdog": "^40.1.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@firebase/app-compat": "^0.2.25",
     "@fullcalendar/bootstrap": "^6.1.10",
     "@fullcalendar/core": "^6.1.10",
@@ -16,6 +18,8 @@
     "@fullcalendar/interaction": "^6.1.10",
     "@fullcalendar/list": "^6.1.10",
     "@fullcalendar/react": "^6.1.10",
+    "@mui/icons-material": "^6.1.2",
+    "@mui/material": "^5.16.7",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.0.1",
     "@south-paw/react-vector-maps": "^3.2.0",
@@ -89,7 +93,6 @@
   "scripts": {
     "start": " react-scripts start",
     "start:development": "cross-env PORT=3001 react-scripts start",
-
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

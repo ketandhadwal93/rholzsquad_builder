@@ -493,7 +493,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import { Badge, Card, Col, Row, Dropdown, Button, Modal, Form, InputGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { DeleteModal } from "Common/DeleteModal";
 import PaginationFile from "Common/PaginationFile";
@@ -503,10 +503,14 @@ import * as Yup from "yup";
 import { deleteRealEstateGridList as onDeleteRealEstateGridList, updateRealEstateGridList as onUpdateRealEstateGridList } from "slices/realestate/thunk";
 import  img5  from '../../../../src/assets/images/real-estate/img-05.jpg';
 import ApiService from "serviceArchitecture/services/apiservice";
+import PropertyCard  from '../ListingGrid/PropertyCard'
+import { Grid, Box, CircularProgress, Typography } from '@mui/material';
+import { Navigate } from 'react-router-dom';
+
 
 const GridProperty = ({ data ,fetchPropertiesData}: any) => {
     const dispatch = useDispatch<any>();
-
+    const navigate = useNavigate()
     const [show, setShow] = useState(false);
     const [realestategrid, setRealestategrid] = useState<any>(null);
     const [selectfeils, setSelectfeils] = useState<any>([]);
@@ -659,15 +663,14 @@ setLoading(true);
                                 <Col xxl={3} lg={4} md={6} key={item._id}>
                                     <Card className="real-estate-grid-widgets card-animate">
                                         <Card.Body className="p-2">
-                                            <img src={item.img?.priview || item?.image ||img5} alt="img-01.jpg" className="rounded w-100 object-fit-cover" style={{ height: "180px" }} />
-                                           
+                                            <img src={item.img?.priview || item?.main_images[0] ||img5} alt="img-01.jpg" className="rounded w-100 object-fit-cover" style={{ height: "180px" }} />
                                             <Dropdown className="dropdown-real-estate" drop="start">
                                                 <Dropdown.Toggle bsPrefix="btn-light btn-icon btn-sm" >
                                                     <i className="bi bi-three-dots-vertical"></i>
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu className="dropdown-menu-end">
-                                                    <Dropdown.Item href="#" className="edit-list" onClick={() => handleShowEditProperty(item)}> <i className="bi bi-pencil-square me-1 align-baseline"></i> Edit</Dropdown.Item>
-                                                    <Dropdown.Item href="#" className="remove-list" onClick={() => handleDeleteShow(item)}> <i className="bi bi-trash3 me-1 align-baseline"></i> Delete</Dropdown.Item>
+                                                    <Dropdown.Item href="#" className="edit-list" onClick={() => navigate(`/apps-real-estate-property-edit/${item?._id}`)}> <i className="bi bi-pencil-square me-1 align-baseline"></i> Edit</Dropdown.Item>
+                                                    {/* <Dropdown.Item href="#" className="remove-list" onClick={() => handleDeleteShow(item)}> <i className="bi bi-trash3 me-1 align-baseline"></i> Delete</Dropdown.Item> */}
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                         </Card.Body>
@@ -683,7 +686,7 @@ setLoading(true);
                                                         <Badge bg="danger-subtle" text="danger" className="fs-xxs mb-3"> <i className="bi bi-house-door align-baseline me-1"></i>{item.type}</Badge>
 
                                             }
-                                            <Link to="/apps-real-estate-property-overview">
+                                            <Link to= {`/apps-real-estate-property-detail/${item?._id}`} >
                                                 <h6 className="fs-lg text-capitalize text-truncate">{item.name}</h6>
                                             </Link>
                                             <p className="text-muted">
@@ -706,12 +709,41 @@ setLoading(true);
                                             </ul>
                                             <div className="border-top border-dashed mt-3 pt-3 d-flex align-items-center justify-content-between gap-3">
                                                 <h5 className="mb-0">${item.price}</h5>
-                                                <Link to="/apps-real-estate-property-overview" className="link-effect">Read More
+                                                <Link to={`/apps-real-estate-property-detail/${item?._id}`} className="link-effect">Read More
                                                     <i className="bi bi-chevron-right align-baseline ms-1"></i>
                                                 </Link>
                                             </div>
                                         </Card.Body>
                                     </Card>
+  {/* <Box sx={{ p: 1 }}>
+      {loading ? (
+        <Box display="flex" justifyContent="center" alignItems="center" height="80vh">
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Grid container spacing={3}>
+          {Array.isArray(currentdata) && currentdata?.length > 0 ? (
+            currentdata?.map((res:any) => (
+              <Grid item xs={12} sm={6} md={4} key={res?._id}>
+                <PropertyCard
+                  title={res?.name}
+                  price={res?.price}
+                  image={res?.main_images[0]}
+                  id={res?._id}
+                />
+              </Grid>
+            ))
+          ) : (
+            <Box display="flex" justifyContent="center" alignItems="center" height="80vh" width="100%">
+              <Typography variant="h6" color="textSecondary">
+                No Property Added
+              </Typography>
+            </Box>
+          )}
+        </Grid>
+      )}
+    </Box> */}
+
                                 </Col>
                             )
                         })

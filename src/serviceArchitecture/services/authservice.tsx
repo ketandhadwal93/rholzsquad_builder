@@ -100,7 +100,7 @@ const AuthService = {
   // OTP Verification Method
   verifyOtp: async (email: string, otp: string): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${BASE_URL}/forgot-verify`, {
+      const response = await fetch(`${BASE_URL}/verify-forgot-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -144,7 +144,7 @@ const AuthService = {
   },
   resetPassword: async (id: string, password: string) => {
     try {
-      const response = await fetch(`${BASE_URL}/set-password`, {
+      const response = await fetch(`${BASE_URL}/reset-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

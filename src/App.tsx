@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 //import Scss
 import "assets/scss/themes.scss";
@@ -48,6 +49,18 @@ const App = () => {
   return (
     <React.Fragment>
       <Route />
+      <ToastContainer
+position="top-right"
+autoClose={2000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/> 
     </React.Fragment>
   );
 }

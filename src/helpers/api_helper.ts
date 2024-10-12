@@ -1,6 +1,6 @@
 import axios from "axios";
 // import { api } from "../config";
-axios.defaults.baseURL = "https://api.rholzsquad.com/admin";
+axios.defaults.baseURL = "https://api.rholzsquad.com/";
 
 // axios.defaults.baseURL = "https://api-node.themesbrand.website";
 // content type
@@ -8,7 +8,8 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // content type
 const authUser: any = localStorage.getItem("authUser")
-const token = JSON.parse(authUser) ? JSON.parse(authUser).token : null;
+const token = JSON.parse(authUser) ? JSON.parse(authUser) : null;
+// const token = authUser 
 if (token)
   // axios.defaults.headers.common["Authorization"] = "Bearer " + token;
 axios.defaults.headers.common["token"] = token;
@@ -112,4 +113,11 @@ const getLoggedinUser = () => {
   }
 };
 
+
+
+
 export { APIClient, setAuthorization, getLoggedinUser };
+
+
+
+
