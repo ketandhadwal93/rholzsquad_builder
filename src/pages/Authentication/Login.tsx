@@ -48,11 +48,17 @@ const Signin = (props: any) => {
                 }
                 toast.info(response.message);
                 // Navigate to dashboard or another page after successful login
-                props.router.navigate("/dashboard-real-estate");
+                // props.router.navigate("/dashboard-real-estate");
+                setTimeout(() => {
+                setLoading(false);
+                    
+                    props.router.navigate("/dashboard-real-estate");
+                  }, 1500);
             } catch (error: any) {
                 setErrorMsg(error.message || "Login failed");
-            } finally {
                 setLoading(false);
+
+            } finally {
             }
         }
     });
@@ -117,7 +123,7 @@ const Signin = (props: any) => {
 
                                     <Form.Group className="mb-3" controlId="formPassword">
                                         <div className="float-end">
-                                            <Link to={process.env.PUBLIC_URL + "/forgot-password"} className="text-muted">Forgot password?</Link>
+                                            <Link to={"/forgot-password"} className="text-muted">Forgot password?</Link>
                                         </div>
                                         <Form.Label>Password <span className="text-danger">*</span></Form.Label>
                                         <div className="position-relative auth-pass-inputgroup mb-3">
@@ -137,9 +143,9 @@ const Signin = (props: any) => {
                                         </div>
                                     </Form.Group>
 
-                                    <Form.Group controlId="formRememberMe">
+                                    {/* <Form.Group controlId="formRememberMe">
                                         <Form.Check type="checkbox" label="Remember me" id="auth-remember-check" />
-                                    </Form.Group>
+                                    </Form.Group> */}
 
                                     <div className="mt-4">
                                         <Button className="btn btn-primary w-100" type="submit" disabled={loading}>
@@ -161,7 +167,8 @@ const Signin = (props: any) => {
                                 </Form>
 
                                 <div className="text-center mt-5">
-                                    <p className="mb-0">Don't have an account ? <Link to={process.env.PUBLIC_URL + "/register"} className="fw-semibold text-secondary text-decoration-underline"> SignUp</Link> </p>
+                                    
+                                    <p className="mb-0">Don't have an account ? <Link to={"/register"} className="fw-semibold text-secondary text-decoration-underline"> SignUp</Link> </p>
                                 </div>
                             </div>
                         </Card.Body>

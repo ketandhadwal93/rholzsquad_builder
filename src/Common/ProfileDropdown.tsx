@@ -39,13 +39,13 @@ const ProfileDropdown = () => {
                     </span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="dropdown-menu-end">
-                    <h6 className="dropdown-header">Welcome {userName}!</h6>
-                    <Dropdown.Item href={process.env.PUBLIC_URL + "/user-profile"}><i className="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Profile</span></Dropdown.Item>
+                    <h6 className="dropdown-header">Welcome </h6>
+                    {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/user-profile"}><i className="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Profile</span></Dropdown.Item> */}
                     {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/apps-chat"}><i className="mdi mdi-message-text-outline text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Messages</span></Dropdown.Item> */}
                     {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/apps-tickets-overview"}><i className="mdi mdi-calendar-check-outline text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Taskboard</span></Dropdown.Item> */}
-                    <Dropdown.Item href={process.env.PUBLIC_URL + "/pages-faqs"}><i className="mdi mdi-lifebuoy text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Help</span></Dropdown.Item>
+                    {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/pages-faqs"}><i className="mdi mdi-lifebuoy text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Help</span></Dropdown.Item> */}
                     <div className="dropdown-divider"></div>
-                    <Dropdown.Item href={process.env.PUBLIC_URL + "/pages-profile"}><i className="mdi mdi-wallet text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Balance : <b>$8451.36</b></span></Dropdown.Item>
+                    {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/pages-profile-settings"}><i className="mdi mdi-account-circle text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Setting </span></Dropdown.Item> */}
                     {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/pages-profile-settings"}><span className="badge bg-soft-success text-success mt-1 float-end">New</span><i className="mdi mdi-cog-outline text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Settings</span></Dropdown.Item> */}
                     {/* <Dropdown.Item href={process.env.PUBLIC_URL + "/auth-lockscreen"}><i className="mdi mdi-lock text-muted fs-lg align-middle me-1"></i> <span className="align-middle">Lock screen</span></Dropdown.Item> */}
                     <Dropdown.Item href={process.env.PUBLIC_URL + "/logout"}><i className="mdi mdi-logout text-muted fs-lg align-middle me-1"></i> <span className="align-middle" data-key="t-logout">Logout</span></Dropdown.Item>

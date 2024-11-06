@@ -1,6 +1,6 @@
 import React from 'react';
-import { FieldArray } from 'formik';
-import { Box, Button, Grid, IconButton, Typography, FormHelperText } from '@mui/material';
+import { FieldArray, Field } from 'formik';
+import { Box, Button, Grid, IconButton, Typography, FormHelperText, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ApiService from 'serviceArchitecture/services/apiservice';
 // import apiEndPoint from '../../utilis/adminapi';
@@ -104,6 +104,21 @@ const FifthStep = ({ setFieldValue, values, touched, errors }) => {
       {renderImageSection('Main Images', 'main_images')}
       {renderImageSection('Floor Images', 'floor_images')}
       {/* {renderImageSection('Garage Images', 'garage_images')} */}
+       {/* Radio Buttons for Publish Status */}
+       <Box mb={3}>
+        <Typography variant="h6" gutterBottom>Publish Status</Typography>
+        <Field name="publish_status">
+          {({ field }) => (
+            <RadioGroup row {...field}>
+              <FormControlLabel value="1" control={<Radio />} label="Publish" />
+              <FormControlLabel value="0" control={<Radio />} label="Draft" />
+            </RadioGroup>
+          )}
+        </Field>
+        {touched.publish_status && errors.publish_status && (
+          <FormHelperText error>{errors.publish_status}</FormHelperText>
+        )}
+      </Box>
     </div>
   );
 };

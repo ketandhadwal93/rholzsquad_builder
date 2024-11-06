@@ -293,249 +293,249 @@ const authProtectedRoutes = [
     // eslint-disable-next-line react/display-name
     { path: "/", exact: true, name : "Navigate" ,component: <Navigate to="/dashboard" /> },
 
-    // Pages
-    // Starter
-    { path: "/pages-starter", name : "Starterpages" ,component: <Starterpages /> },
+    // // Pages
+    // // Starter
+    // { path: "/pages-starter", name : "Starterpages" ,component: <Starterpages /> },
 
-    // Terms & Condition
-    { path: "/pages-privacy-policy", name : "PrivacyPolicy" ,component: <PrivacyPolicy /> },
-    // Terms & Condition
-    { path: "/pages-term-conditions", name : "TermsContions" ,component: <TermsContions /> },
+    // // Terms & Condition
+    // { path: "/pages-privacy-policy", name : "PrivacyPolicy" ,component: <PrivacyPolicy /> },
+    // // Terms & Condition
+    // { path: "/pages-term-conditions", name : "TermsContions" ,component: <TermsContions /> },
 
-    // Timeline
-    { path: "/pages-timeline", name : "TimeLine" ,component: <TimeLine /> },
+    // // Timeline
+    // { path: "/pages-timeline", name : "TimeLine" ,component: <TimeLine /> },
 
-    // FAQs
-    { path: "/pages-faqs", name : "Faqs" ,component: <Faqs /> },
+    // // FAQs
+    // { path: "/pages-faqs", name : "Faqs" ,component: <Faqs /> },
 
-    // Contacts
-    { path: "/pages-contacts", name : "Contacts" ,component: <Contacts /> },
+    // // Contacts
+    // { path: "/pages-contacts", name : "Contacts" ,component: <Contacts /> },
 
-    // Pricing
-    { path: "/pages-pricing", name : "Pricing" ,component: <Pricing /> },
+    // // Pricing
+    // { path: "/pages-pricing", name : "Pricing" ,component: <Pricing /> },
 
-    // Profile
-    { path: "/pages-profile", name : "Profile" ,component: <Profile /> },
+    // // Profile
+    // { path: "/pages-profile", name : "Profile" ,component: <Profile /> },
 
-    // Profile Setting
+    // // Profile Setting
     { path: "/pages-profile-settings", name : "ProfileSetting" ,component: <ProfileSetting /> },
 
-    //   Bootstrap UI
-    //  Alerts
-    { path: "/ui-alerts", name : "Alerts" ,component: <Alerts /> },
+    // //   Bootstrap UI
+    // //  Alerts
+    // { path: "/ui-alerts", name : "Alerts" ,component: <Alerts /> },
 
-    //  Badges
-    { path: "/ui-badges", name : "Badges" ,component: <Badges /> },
+    // //  Badges
+    // { path: "/ui-badges", name : "Badges" ,component: <Badges /> },
 
-    //  Buttons
-    { path: "/ui-buttons", name : "Button" ,component: <Button /> },
+    // //  Buttons
+    // { path: "/ui-buttons", name : "Button" ,component: <Button /> },
 
-    //  Colors
-    { path: "/ui-colors", name : "Colors" ,component: <Colors /> },
+    // //  Colors
+    // { path: "/ui-colors", name : "Colors" ,component: <Colors /> },
 
-    //  Cards
-    { path: "/ui-cards", name : "Cards" ,component: <Cards /> },
+    // //  Cards
+    // { path: "/ui-cards", name : "Cards" ,component: <Cards /> },
 
-    //  Carousel
-    { path: "/ui-carousel", name : "Carousel" ,component: <Carousel /> },
+    // //  Carousel
+    // { path: "/ui-carousel", name : "Carousel" ,component: <Carousel /> },
 
-    //  Dropdowns
-    { path: "/ui-dropdowns", name : "DropDown" ,component: <DropDown /> },
+    // //  Dropdowns
+    // { path: "/ui-dropdowns", name : "DropDown" ,component: <DropDown /> },
 
-    //  Grid
-    { path: "/ui-grid", name : "Grid" ,component: <Grid /> },
+    // //  Grid
+    // { path: "/ui-grid", name : "Grid" ,component: <Grid /> },
 
-    //  Images
-    { path: "/ui-images", name : "Images" ,component: <Images /> },
+    // //  Images
+    // { path: "/ui-images", name : "Images" ,component: <Images /> },
 
-    //  Tabs
-    { path: "/ui-tabs", name : "Tabs" ,component: <Tabs /> },
+    // //  Tabs
+    // { path: "/ui-tabs", name : "Tabs" ,component: <Tabs /> },
 
-    //  Accordion & Collapse
-    { path: "/ui-accordions", name : "AccordianCollapse" ,component: <AccordianCollapse /> },
+    // //  Accordion & Collapse
+    // { path: "/ui-accordions", name : "AccordianCollapse" ,component: <AccordianCollapse /> },
 
-    //  Modals
-    { path: "/ui-modals", name : "Modals" ,component: <Modals /> },
+    // //  Modals
+    // { path: "/ui-modals", name : "Modals" ,component: <Modals /> },
 
-    //  Offcanvas
-    { path: "/ui-offcanvas", name : "Offcanvas" ,component: <Offcanvas /> },
+    // //  Offcanvas
+    // { path: "/ui-offcanvas", name : "Offcanvas" ,component: <Offcanvas /> },
 
-    //  Placeholder
-    { path: "/ui-placeholders", name : "PlaceHolder" ,component: <PlaceHolder /> },
+    // //  Placeholder
+    // { path: "/ui-placeholders", name : "PlaceHolder" ,component: <PlaceHolder /> },
 
-    //  Progress
-    { path: "/ui-progress", name : "Progress" ,component: <Progress /> },
+    // //  Progress
+    // { path: "/ui-progress", name : "Progress" ,component: <Progress /> },
 
-    //  Notifications
-    { path: "/ui-notifications", name : "Notifications" ,component: <Notifications /> },
+    // //  Notifications
+    // { path: "/ui-notifications", name : "Notifications" ,component: <Notifications /> },
 
-    //  Media Object
-    { path: "/ui-media", name : "Media" ,component: <Media /> },
+    // //  Media Object
+    // { path: "/ui-media", name : "Media" ,component: <Media /> },
 
-    //  Embeded Video
-    { path: "/ui-embed-video", name : "Video" ,component: <Video /> },
+    // //  Embeded Video
+    // { path: "/ui-embed-video", name : "Video" ,component: <Video /> },
 
-    //  Typography
-    { path: "/ui-typography", name : "Typography" ,component: <Typography /> },
+    // //  Typography
+    // { path: "/ui-typography", name : "Typography" ,component: <Typography /> },
 
-    //  Lists   
-    { path: "/ui-lists", name : "Lists" ,component: <Lists /> },
+    // //  Lists   
+    // { path: "/ui-lists", name : "Lists" ,component: <Lists /> },
 
-    //  Links   
-    { path: "/ui-links", name : "Links" ,component: <Links /> },
+    // //  Links   
+    // { path: "/ui-links", name : "Links" ,component: <Links /> },
 
-    //  General
-    { path: "/ui-general", name : "General" ,component: <General /> },
+    // //  General
+    // { path: "/ui-general", name : "General" ,component: <General /> },
 
-    //  Utilities
-    { path: "/ui-utilities", name : "Utilities" ,component: <Utilities /> },
+    // //  Utilities
+    // { path: "/ui-utilities", name : "Utilities" ,component: <Utilities /> },
 
-    // Advance UI
-    // SweetAlert
-    // { path: "/advance-ui-sweetalerts", name : "Utilities" ,component: <Utilities /> },
+    // // Advance UI
+    // // SweetAlert
+    // // { path: "/advance-ui-sweetalerts", name : "Utilities" ,component: <Utilities /> },
 
-    // Scrollbar
-    { path: "/advance-ui-scrollbar", name : "ScrollBar" ,component: <ScrollBar /> },
+    // // Scrollbar
+    // { path: "/advance-ui-scrollbar", name : "ScrollBar" ,component: <ScrollBar /> },
 
-    // Swiper Slider
-    { path: "/advance-ui-swiper", name : "SwiperSlider" ,component: <SwiperSlider /> },
+    // // Swiper Slider
+    // { path: "/advance-ui-swiper", name : "SwiperSlider" ,component: <SwiperSlider /> },
 
-    // Ratings
-    { path: "/advance-ui-ratings", name : "Ratings" ,component: <Ratings /> },
+    // // Ratings
+    // { path: "/advance-ui-ratings", name : "Ratings" ,component: <Ratings /> },
 
-    // Highlight
-    { path: "/advance-ui-highlight", name : "HightLights" ,component: <HightLights /> },
+    // // Highlight
+    // { path: "/advance-ui-highlight", name : "HightLights" ,component: <HightLights /> },
 
-    // Scrollspy
-    // { path: "/advance-ui-scrollspy", name : "Utilities" ,component: <Utilities /> },
+    // // Scrollspy
+    // // { path: "/advance-ui-scrollspy", name : "Utilities" ,component: <Utilities /> },
 
-    // Custom UI
-    // Ribbons
-    { path: "/ui-ribbons", name : "Ribbons" ,component: <Ribbons /> },
+    // // Custom UI
+    // // Ribbons
+    // { path: "/ui-ribbons", name : "Ribbons" ,component: <Ribbons /> },
 
-    // Profile
-    { path: "/ui-profile", name : "Profiles" ,component: <Profiles /> },
+    // // Profile
+    // { path: "/ui-profile", name : "Profiles" ,component: <Profiles /> },
 
-    // Counter
-    { path: "/ui-counter", name : "Counters" ,component: <Counters /> },
+    // // Counter
+    // { path: "/ui-counter", name : "Counters" ,component: <Counters /> },
 
-    // Forms
-    // Basic Elements
-    { path: "/forms-elements", name : "BasicForm" ,component: <BasicForm /> },
+    // // Forms
+    // // Basic Elements
+    // { path: "/forms-elements", name : "BasicForm" ,component: <BasicForm /> },
 
-    // Form Select
-    { path: "/forms-select", name : "FormSelect" ,component: <FormSelect /> },
+    // // Form Select
+    // { path: "/forms-select", name : "FormSelect" ,component: <FormSelect /> },
 
-    // Checkboxes & Radios
-    { path: "/forms-checkboxs-radios", name : "FormCheckboxRadio" ,component: <FormCheckboxRadio /> },
+    // // Checkboxes & Radios
+    // { path: "/forms-checkboxs-radios", name : "FormCheckboxRadio" ,component: <FormCheckboxRadio /> },
 
-    // Pickers
-    { path: "/forms-pickers", name : "FormPickers" ,component: <FormPickers /> },
+    // // Pickers
+    // { path: "/forms-pickers", name : "FormPickers" ,component: <FormPickers /> },
 
-    // Input Masks
-    { path: "/forms-masks", name : "FormInputMask" ,component: <FormInputMask /> },
+    // // Input Masks
+    // { path: "/forms-masks", name : "FormInputMask" ,component: <FormInputMask /> },
 
-    // Advanced
-    { path: "/forms-advanced", name : "FormAdvanced" ,component: <FormAdvanced /> },
+    // // Advanced
+    // { path: "/forms-advanced", name : "FormAdvanced" ,component: <FormAdvanced /> },
 
-    // Validation
-    { path: "/forms-validation", name : "FormValidation" ,component: <FormValidation /> },
+    // // Validation
+    // { path: "/forms-validation", name : "FormValidation" ,component: <FormValidation /> },
 
-    // Wizard
-    { path: "/forms-wizard", name : "FormWizard" ,component: <FormWizard /> },
+    // // Wizard
+    // { path: "/forms-wizard", name : "FormWizard" ,component: <FormWizard /> },
 
-    // Editors
-    { path: "/forms-editors", name : "EditorForm" ,component: <EditorForm /> },
+    // // Editors
+    // { path: "/forms-editors", name : "EditorForm" ,component: <EditorForm /> },
 
-    // File Uploads
-    { path: "/forms-file-uploads", name : "FileUpload" ,component: <FileUpload /> },
+    // // File Uploads
+    // { path: "/forms-file-uploads", name : "FileUpload" ,component: <FileUpload /> },
 
-    // Form Layouts
-    { path: "/forms-layouts", name : "FormLayout" ,component: <FormLayout /> },
+    // // Form Layouts
+    // { path: "/forms-layouts", name : "FormLayout" ,component: <FormLayout /> },
 
-    // Tables
-    // Basic Tables
-    { path: "/tables-basic", name : "BasicTables" ,component: <BasicTables /> },
+    // // Tables
+    // // Basic Tables
+    // { path: "/tables-basic", name : "BasicTables" ,component: <BasicTables /> },
 
-    // React Tables
-    { path: "/tables-react", name : "ReactTable" ,component: <ReactTable /> },
+    // // React Tables
+    // { path: "/tables-react", name : "ReactTable" ,component: <ReactTable /> },
 
-    // Data Tables
-    { path: "/tables-datatables", name : "Datatables" ,component: <Datatables /> },
+    // // Data Tables
+    // { path: "/tables-datatables", name : "Datatables" ,component: <Datatables /> },
 
-    // ApexCharts
-    // Line
-    { path: "/charts-apex-line", name : "ApexLine" ,component: <ApexLine /> },
+    // // ApexCharts
+    // // Line
+    // { path: "/charts-apex-line", name : "ApexLine" ,component: <ApexLine /> },
 
-    // Area
-    { path: "/charts-apex-area", name : "ApexArea" ,component: <ApexArea /> },
+    // // Area
+    // { path: "/charts-apex-area", name : "ApexArea" ,component: <ApexArea /> },
 
-    // Column
-    { path: "/charts-apex-column", name : "ApexColumn" ,component: <ApexColumn /> },
+    // // Column
+    // { path: "/charts-apex-column", name : "ApexColumn" ,component: <ApexColumn /> },
 
-    // Bar
-    { path: "/charts-apex-bar", name : "ApexBar" ,component: <ApexBar /> },
+    // // Bar
+    // { path: "/charts-apex-bar", name : "ApexBar" ,component: <ApexBar /> },
 
-    // Mixed
-    { path: "/charts-apex-mixed", name : "ApexMixed" ,component: <ApexMixed /> },
+    // // Mixed
+    // { path: "/charts-apex-mixed", name : "ApexMixed" ,component: <ApexMixed /> },
 
-    // Timeline
-    { path: "/charts-apex-timeline", name : "ApexTimeline" ,component: <ApexTimeline /> },
+    // // Timeline
+    // { path: "/charts-apex-timeline", name : "ApexTimeline" ,component: <ApexTimeline /> },
 
-    // Candlestick
-    { path: "/charts-apex-candlestick", name : "ApexCandle" ,component: <ApexCandle /> },
+    // // Candlestick
+    // { path: "/charts-apex-candlestick", name : "ApexCandle" ,component: <ApexCandle /> },
 
-    // Boxplot
-    { path: "/charts-apex-boxplot", name : "ApexBoxplot" ,component: <ApexBoxplot /> },
+    // // Boxplot
+    // { path: "/charts-apex-boxplot", name : "ApexBoxplot" ,component: <ApexBoxplot /> },
 
-    // Bubble
-    { path: "/charts-apex-bubble", name : "ApexBubble" ,component: <ApexBubble /> },
+    // // Bubble
+    // { path: "/charts-apex-bubble", name : "ApexBubble" ,component: <ApexBubble /> },
 
-    // Scatter
-    { path: "/charts-apex-scatter", name : "ApexScatter" ,component: <ApexScatter /> },
+    // // Scatter
+    // { path: "/charts-apex-scatter", name : "ApexScatter" ,component: <ApexScatter /> },
 
-    // Heatmap
-    { path: "/charts-apex-heatmap", name : "ApexHeatmap" ,component: <ApexHeatmap /> },
+    // // Heatmap
+    // { path: "/charts-apex-heatmap", name : "ApexHeatmap" ,component: <ApexHeatmap /> },
 
-    // Treemap
-    { path: "/charts-apex-treemap", name : "ApexTreemap" ,component: <ApexTreemap /> },
+    // // Treemap
+    // { path: "/charts-apex-treemap", name : "ApexTreemap" ,component: <ApexTreemap /> },
 
-    // Pie
-    { path: "/charts-apex-pie", name : "ApexPie" ,component: <ApexPie /> },
+    // // Pie
+    // { path: "/charts-apex-pie", name : "ApexPie" ,component: <ApexPie /> },
 
-    // Radialbar
-    { path: "/charts-apex-radialbar", name : "ApexRadialbar" ,component: <ApexRadialbar /> },
+    // // Radialbar
+    // { path: "/charts-apex-radialbar", name : "ApexRadialbar" ,component: <ApexRadialbar /> },
 
-    // Radar
-    { path: "/charts-apex-radar", name : "ApexRadar" ,component: <ApexRadar /> },
+    // // Radar
+    // { path: "/charts-apex-radar", name : "ApexRadar" ,component: <ApexRadar /> },
 
-    // Polar Area
-    { path: "/charts-apex-polar", name : "ApexPolar" ,component: <ApexPolar /> },
+    // // Polar Area
+    // { path: "/charts-apex-polar", name : "ApexPolar" ,component: <ApexPolar /> },
     
-    //Funnel chart 
-    { path : "/charts-apex-funnel", name : "Funnel", component : <FunnelCharts />},
-    { path : "/charts-apex-range-area", name : "RangeArea", component : <RangeArea />},
+    // //Funnel chart 
+    // { path : "/charts-apex-funnel", name : "Funnel", component : <FunnelCharts />},
+    // { path : "/charts-apex-range-area", name : "RangeArea", component : <RangeArea />},
 
-    // Icons
-    // Remix Icon
-    { path: "/icons-remix", name : "RemixIcons" ,component: <RemixIcons /> },
+    // // Icons
+    // // Remix Icon
+    // { path: "/icons-remix", name : "RemixIcons" ,component: <RemixIcons /> },
 
-    // Boxicons Icon
-    { path: "/icons-boxicons", name : "BoxIcons" ,component: <BoxIcons /> },
+    // // Boxicons Icon
+    // { path: "/icons-boxicons", name : "BoxIcons" ,component: <BoxIcons /> },
 
-    // Material Design Icon
-    { path: "/icons-materialdesign", name : "MaterialDesign" ,component: <MaterialDesign /> },
+    // // Material Design Icon
+    // { path: "/icons-materialdesign", name : "MaterialDesign" ,component: <MaterialDesign /> },
 
-    // Bootstrap Icon
-    { path: "/icons-bootstrap", name : "BootstrapIcon" ,component: <BootstrapIcon /> },
+    // // Bootstrap Icon
+    // { path: "/icons-bootstrap", name : "BootstrapIcon" ,component: <BootstrapIcon /> },
 
-    // Phosphor Icon
-    { path: "/icons-phosphor", name : "PhosphorIcon" ,component: <PhosphorIcon /> },
+    // // Phosphor Icon
+    // { path: "/icons-phosphor", name : "PhosphorIcon" ,component: <PhosphorIcon /> },
 
 
-    // Maps
-    // Google
-    { path: "/maps-google", name : "GoogleMap" ,component: <GoogleMap /> },
+    // // Maps
+    // // Google
+    // { path: "/maps-google", name : "GoogleMap" ,component: <GoogleMap /> },
     // Widgets
     { path: "/widgets", name : "Widgets" ,component: <Widgets /> },
     { path: "/apps-calendar", name : "Calendar" ,component: <Calendar /> },

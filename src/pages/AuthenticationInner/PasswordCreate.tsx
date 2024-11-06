@@ -169,10 +169,10 @@ const PasswordCreate = () => {
                     </div>
                   </div>
 
-                  <Form.Check className="form-check-primary">
+                  {/* <Form.Check className="form-check-primary">
                     <Form.Check.Input type="checkbox" value="" id="auth-remember-check" />
                     <Form.Check.Label htmlFor="auth-remember-check">Remember me</Form.Check.Label>
-                  </Form.Check>
+                  </Form.Check> */}
 
                   <div className="mt-4">
                     <Button variant='primary' className="w-100" type="submit">

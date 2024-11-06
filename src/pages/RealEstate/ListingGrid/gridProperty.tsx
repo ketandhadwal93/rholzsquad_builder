@@ -532,7 +532,7 @@ const GridProperty = ({ data ,fetchPropertiesData}: any) => {
     }, [currentPage, data, currentdata])
 
     const pageNumbers: any = [];
-    for (let i = 1; i <= Math.ceil(data.length / perPageData); i++) {
+    for (let i = 1; i <= Math.ceil(data?.length / perPageData); i++) {
         pageNumbers.push(i);
     }
     const handleprevPage = () => {
@@ -544,10 +544,10 @@ const GridProperty = ({ data ,fetchPropertiesData}: any) => {
         setCurrentPage(nextPage);
     };
     useEffect(() => {
-        if (pageNumbers.length && pageNumbers.length < currentPage) {
-            setCurrentPage(pageNumbers.length)
+        if (pageNumbers?.length && pageNumbers?.length < currentPage) {
+            setCurrentPage(pageNumbers?.length)
         }
-    }, [currentPage, pageNumbers.length]);
+    }, [currentPage, pageNumbers?.length]);
 
     //Edit Property modal
     const handleEditClose = () => { setEditProperty(false); setSelectfeils(null) };

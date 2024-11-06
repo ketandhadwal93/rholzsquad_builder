@@ -1003,46 +1003,41 @@ const Navdata = () => {
                 icon:" ph-house",
                 link: "/apps-real-estate-grid",
             },
+           
             // {
-            //     id: "users",
-            //     icon:" ph-users-three",
-            //     label: "Users",
-            //     link: "/apps-real-estate-user-list-view",
+            //     id: "others",
+            //     label: "Others",
+            //     icon:" ph-question",
+            //     link: "/#",
+            //     isChildItem: true,
+            //     click: function (e: any) {
+            //         e.preventDefault();
+            //         setIsOthers(!isOthers);
+            //     },
+            //     stateVariables: isOthers,
+            //     subItems: [
+            //         {
+            //             id: "faq",
+            //             label: "FAQ",
+            //             link: "/pages-faqs",
+            //         },
+            //         {
+            //             id: "blog",
+            //             label: "Blog",
+            //             link: "/other-pages-blogs-list",
+            //         },
+            //         {
+            //             id: "contact-us",
+            //             label: "Contact Us List",
+            //             link: "/other-pages-contact-us-list",
+            //         },
+            //         {
+            //             id: "content",
+            //             label: "Content",
+            //             link: "/other-pages-content",
+            //         },
+            //     ],
             // },
-            {
-                id: "others",
-                label: "Others",
-                icon:" ph-question",
-                link: "/#",
-                isChildItem: true,
-                click: function (e: any) {
-                    e.preventDefault();
-                    setIsOthers(!isOthers);
-                },
-                stateVariables: isOthers,
-                subItems: [
-                    {
-                        id: "faq",
-                        label: "FAQ",
-                        link: "/pages-faqs",
-                    },
-                    {
-                        id: "blog",
-                        label: "Blog",
-                        link: "/other-pages-blogs-list",
-                    },
-                    {
-                        id: "contact-us",
-                        label: "Contact Us List",
-                        link: "/other-pages-contact-us-list",
-                    },
-                    {
-                        id: "content",
-                        label: "Content",
-                        link: "/other-pages-content",
-                    },
-                ],
-            },
         ];
 
         return <React.Fragment>{menuItems1}</React.Fragment>;

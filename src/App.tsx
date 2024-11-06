@@ -8,10 +8,10 @@ import { v4 as uuidv } from 'uuid';
 //imoprt Route
 import Route from 'Routes/Index';
 
-import fakeBackend from "./helpers/AuthType/fakeBackend";
+// import fakeBackend from "./helpers/AuthType/fakeBackend";
 
 // Activating fake backend
-fakeBackend();
+// fakeBackend();
 
 // Import Firebase Configuration file
 // import { initFirebaseBackend } from "./helpers/firebase_helper";

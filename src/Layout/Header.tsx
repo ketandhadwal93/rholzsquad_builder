@@ -103,7 +103,7 @@ const Header = () => {
                             {/* <Language /> */}
 
                             {/* My Cart Dropdown */}
-                            <MyCartDropdown />
+                            {/* <MyCartDropdown /> */}
 
                             {/* FullScreenDropdown */}
                             <FullScreenDropdown />
@@ -112,7 +112,7 @@ const Header = () => {
                             <LayoutModeDropdown />
 
                             {/* NotificationDropdown */}
-                            <NotificationDropdown />
+                            {/* <NotificationDropdown /> */}
 
                             {/* ProfileDropdown */}
                             <ProfileDropdown />

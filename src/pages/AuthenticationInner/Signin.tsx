@@ -39,9 +39,9 @@ const Signin = () => {
                                         </div>
                                     </Form.Group>
 
-                                    <Form.Group controlId="formRememberMe">
+                                    {/* <Form.Group controlId="formRememberMe">
                                         <Form.Check type="checkbox" label="Remember me" id="auth-remember-check" />
-                                    </Form.Group>
+                                    </Form.Group> */}
 
                                     <div className="mt-4">
                                         <Button className="btn btn-primary w-100" type="submit">Sign In</Button>

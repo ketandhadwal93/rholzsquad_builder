@@ -26,7 +26,7 @@ const RealEstateslice = createSlice({
             state.realEstateGridList = action.payload;
         });
         builder.addCase(getRealEstateGridList.rejected, (state: any, action: any) => {
-            state.error = action.payload.error || null;
+            state.error = action?.payload?.error || null;
         });
         builder.addCase(addRealEstateGridList.fulfilled, (state: any, action: any) => {
             state.realEstateGridList.unshift(action.payload);
