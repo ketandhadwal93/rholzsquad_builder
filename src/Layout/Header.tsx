@@ -109,7 +109,7 @@ const Header = () => {
                             <FullScreenDropdown />
 
                             {/* Layout Mode Dropdown */}
-                            <LayoutModeDropdown />
+                            {/* <LayoutModeDropdown /> */}
 
                             {/* NotificationDropdown */}
                             {/* <NotificationDropdown /> */}

@@ -10,6 +10,25 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 // content type
 const authUser: any = localStorage.getItem("authUser")
 const token = JSON.parse(authUser) ? JSON.parse(authUser) : null;
+
+
+
+
+// Interceptor to dynamically set the token
+axios.interceptors.request.use(
+  (config) => {
+    const authUser = localStorage.getItem("authUser");
+    const token = authUser ? JSON.parse(authUser) : null;
+
+    if (token) {
+      config.headers["token"] = token; // Replace 'Authorization' if your API uses a different header
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 // const token = authUser 
 if (token)
   // axios.defaults.headers.common["Authorization"] = "Bearer " + token;
@@ -86,6 +105,13 @@ class APIClient {
       : { "Content-Type": "application/json" };
 
     return axios.post(url, data, { headers });
+  };
+  createblank = (url: any , isFormData = false) => {
+    const headers = isFormData
+      ? { "Content-Type": "multipart/form-data" }
+      : { "Content-Type": "application/json" };
+
+    return axios.post(url,  { headers });
   };
   /**
    * Updates data

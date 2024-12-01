@@ -1003,7 +1003,13 @@ const Navdata = () => {
                 icon:" ph-house",
                 link: "/apps-real-estate-grid",
             },
-           
+            {
+                id: "earnings",
+                label: "Earnings",
+                icon: "ph-currency-circle-dollar-thin",
+                link: "/apps-real-estate-earning",
+                parentId: "real-estate",
+            },
             // {
             //     id: "others",
             //     label: "Others",

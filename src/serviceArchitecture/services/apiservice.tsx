@@ -24,7 +24,22 @@ const ApiService = {
           throw new Error(`Failed to fetch dashboard data: ${error}`);
         }
       },
-     
+      getorderlist: async (params: any = {}) => {
+        try {
+          const response = await apiClient.get('builder/earnings', params);  // Replace '/dashboard/data' with the actual endpoint
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to fetch dashboard data: ${error}`);
+        }
+      },
+      getBuilderProfile: async (params: any = {}) => {
+        try {
+          const response = await apiClient.get('builder/profile', params);  // Replace '/dashboard/data' with the actual endpoint
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to fetch dashboard data: ${error}`);
+        }
+      },
       getBuilderList: async (params: any = {}) => {
         try {
           const response = await apiClient.get('builder/builders', params);  // Replace '/dashboard/data' with the actual endpoint
@@ -201,7 +216,14 @@ const ApiService = {
       },
 
       
-
+      getPlanStyles: async (params = {}) => {
+        try {
+          const response = await apiClient.get('/user/plan-styles', params); // Update '/plan-styles' with the actual endpoint
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to fetch plan styles: ${error}`);
+        }
+      },
 
       createContent : async (data:any) => {
         try{
@@ -219,7 +241,14 @@ const ApiService = {
           throw new Error(`Failed to update builder status: ${error}`);
         }
       },
-      
+      addBankAccount : async () => {
+        try{
+        const response = await apiClient.createblank('builder/bank-account', )
+          return response;
+        } catch (error) {
+          throw new Error(`Failed to create user: ${error}`);
+        }
+      },
      
 
       uploadImage : async (data:any) => {

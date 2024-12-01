@@ -89,7 +89,7 @@ const RealEstateslice = createSlice({
             state.earninglist = action.payload;
         });
         builder.addCase(getEarningList.rejected, (state: any, action: any) => {
-            state.error = action.payload.error || null;
+            state.error = action?.payload?.error || null;
         });
 
         builder.addCase(getAgenciesList.fulfilled, (state: any, action: any) => {

@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 // Validation schemas
   export const step1ValidationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
-    plan_style: Yup.number().required('plan style  is required').min(0),
+    plan_style: Yup.string().required('plan style  is required'),
     plan_type: Yup.number().required('plan type width is required').min(0),
     floors: Yup.string().required('Floors is required'),
     beds: Yup.number().required('Beds is required').min(0),

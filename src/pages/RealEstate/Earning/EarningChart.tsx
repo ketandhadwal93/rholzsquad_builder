@@ -72,13 +72,13 @@ const EarningChart = ({ dataColors }: any) => {
     };
     return (
         <React.Fragment>
-            <ReactApexChart
+            {/* <ReactApexChart
                 options={options}
                 series={series}
                 className="apex-charts"
                 type="line"
                 height={350}
-            />
+            /> */}
         </React.Fragment>
     );
 };

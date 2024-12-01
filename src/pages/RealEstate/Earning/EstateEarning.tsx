@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Flatpickr from "react-flatpickr";
-import { Card, Col, Container, Row, Badge, Form } from 'react-bootstrap';
+import { Card, Col, Container, Row, Badge, Form ,Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import BreadCrumb from "Common/BreadCrumb";
 import { earningcard } from "Common/data/earning";
@@ -10,13 +10,69 @@ import {
 import EarningChart from "./EarningChart";
 import TableContainer from "Common/TableContainer";
 import { useDispatch, useSelector } from "react-redux";
+import { earningdata } from "Common/data/earning";
 import { createSelector } from "reselect";
+import ApiService from "serviceArchitecture/services/apiservice";
 const Earning = () => {
 
+    console.log("earningdddddddddd+>>>>>>>>>>>>>>>>>",earningdata)
     document.title = "Earnings | Steex - Admin & Dashboard Template";
+    const [earningList, setEarningList] = useState([]);
 
     const dispatch = useDispatch<any>();
 
+    useEffect(() => {
+        const fetorderdata = async () => {
+            try {
+                const params = { limit: 1000 }; // Define your params object with limit
+              const response = await ApiService.getorderlist(params); // Fetch dashboard data
+              setEarningList(response.data);
+              setEarning(response.data);
+              console.log('eaarning at',earningList)
+            } catch (err: any) {
+              console.log(err.message);
+            }
+          };
+
+          fetorderdata();
+          fetchBuilderProfile()
+    }, []);
+    const [builderAccount, setbuilderAccount] = useState(false);
+    const fetchBuilderProfile = async () => {
+        try {
+            const params = { limit: 1000 }; // Define your params object with limit
+          const response = await ApiService.getBuilderProfile(''); // Fetch dashboard data
+        //   setEarningList(response.data);
+
+        if(response.status === 200){
+            setbuilderAccount(response.data.is_account_added===1 );
+
+        }
+          console.log('eaarning at',earningList)
+        } catch (err: any) {
+          console.log(err.message);
+        }
+      };
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleAddBankAccount = async () => {
+      setIsLoading(true); // Disable the button by setting loading to true
+      try {
+        const response = await ApiService.addBankAccount();
+        console.log('API Response:', response); // Optional: Handle the response as needed
+  
+        if (response.status === 200) {
+          // Open the response URL in the same tab
+          window.location.href = response?.data?.url;
+        }
+      } catch (error) {
+        console.error('Error adding bank account:', error);
+        // Handle errors, maybe show an error message
+      } finally {
+        setIsLoading(false); // Re-enable the button after API response
+      }
+    };
     const selectEarningList = createSelector(
         (state: any) => state.RealEstate,
         (state) => ({
@@ -24,14 +80,14 @@ const Earning = () => {
         })
     );
 
-    const { earningList } = useSelector(selectEarningList);
+    // const { earningList } = useSelector(selectEarningList);
 
 
-    useEffect(() => {
-        dispatch(onGetEarningList());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(onGetEarningList());
+    // }, [dispatch]);
 
-    const [earning, setEarning] = useState<any>();
+    const [earning, setEarning] = useState<any>(earningdata);
     const [selectDate, setSelectDate] = useState(0);
 
     //search
@@ -45,9 +101,9 @@ const Earning = () => {
         }
     };
 
-    useEffect(() => {
-        setEarning(earningList);
-    }, [earningList]);
+    // useEffect(() => {
+    //     setEarning(earningList);
+    // }, [earningList]);
 
     const column = useMemo(
         () => [
@@ -156,7 +212,7 @@ const Earning = () => {
             <div className="page-content">
                 <Container fluid >
                     <BreadCrumb title="Earnings" pageTitle="Real Estate" />
-                    <Row className="row-cols-xxl-5 row-cols-lg-3 row-cols-md-2 row-cols-1">
+                    {/* <Row className="row-cols-xxl-5 row-cols-lg-3 row-cols-md-2 row-cols-1">
                         {
                             (earningcard || [])?.map((item: any) => {
                                 return (
@@ -172,8 +228,8 @@ const Earning = () => {
                                 );
                             })
                         }
-                    </Row>
-                    <Row>
+                    </Row> */}
+                    {/* <Row>
                         <Col lg={12}>
                             <Card>
                                 <Card.Body className="pb-0 mb-n4">
@@ -201,19 +257,30 @@ const Earning = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                    </Row>
+                    </Row> */}
                     <Row>
                         <Col lg={12}>
                             <Card id="agenciesList">
                                 <Card.Header>
                                     <Row className="align-items-center gy-3">
                                         <Col xl={3} lg={4} md={6} className="order-last order-md-first me-auto">
-                                            <div className="search-box">
+                                            {/* <div className="search-box">
                                                 <Form.Control type="text" className="search" placeholder="Search for transaction, date or something..." onChange={handleSearch} />
                                                 <i className="ri-search-line search-icon"></i>
+                                            </div> */}
+                                             <div className="search-box">
+                                             {!builderAccount && (
+  <Button
+    variant="primary"
+    onClick={handleAddBankAccount}
+    disabled={isLoading} // Disable the button if isLoading is true
+  >
+    {isLoading ? 'Adding Account...' : 'Add Account'}
+  </Button>
+)}                                             {/* <i className="ri-search-line search-icon"></i> */}
                                             </div>
                                         </Col>
-                                        <Col lg={3} md={5} className="col-xl-auto">
+                                        {/* <Col lg={3} md={5} className="col-xl-auto">
                                             <div className="d-flex align-items-center gap-2">
                                                 <span className="text-muted flex-shrink-0">Sort by: </span>
                                                 <div className="flex-grow-1">
@@ -227,7 +294,7 @@ const Earning = () => {
                                                     </Form.Select>
                                                 </div>
                                             </div>
-                                        </Col>
+                                        </Col> */}
                                     </Row>
                                 </Card.Header>
                                 <Card.Body>
@@ -235,7 +302,7 @@ const Earning = () => {
                                         <TableContainer
                                             isPagination={true}
                                             columns={column}
-                                            data={earning || []}
+                                            data={earningdata || []}
                                             customPageSize={10}
                                             tableClass="table-borderless table-centered align-middle table-nowrap mb-0"
                                             theadClass="text-muted table-light"

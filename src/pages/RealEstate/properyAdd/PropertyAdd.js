@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import FifthStep from './steps/FifthStep';
 import  ApiService  from '../../../serviceArchitecture/services/apiservice';
+import { string } from 'prop-types';
 
 const steps = ['Basic Information', 'Dimensions', 'Features', 'Pricing', 'Images'];
 const initialValues = {
@@ -87,7 +88,13 @@ const PropertyForm = () => {
     } else {
       setShow(false);
       console.log(values)
-      let apiRes = await ApiService.addProperty(values);
+      const transformedValues = {
+        ...values,
+        plan_style_id: String(values.plan_style), // Map plan_style to plan_style_id
+    };
+    delete transformedValues.plan_style; // Optionally remove plan_style if not needed
+
+      let apiRes = await ApiService.addProperty(transformedValues);
       if (apiRes?.status === 200 || apiRes.data) {
         toast.success("Property added successfully");
         navigate('/apps-real-estate-grid');

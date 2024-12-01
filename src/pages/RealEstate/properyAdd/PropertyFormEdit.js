@@ -141,7 +141,13 @@ useEffect(() => {
         setActiveStep(activeStep + 1);
         setShow(false)
     } else {
-        const payload = { ...values, id }
+      const transformedValues = {
+        ...values,
+        plan_style_id: values.plan_style, // Map plan_style to plan_style_id
+    };
+    delete transformedValues.plan_style; // Optionally remove plan_style if not needed
+
+        const payload = { ...transformedValues, id }
         setShow(false)
         let apiRes = await ApiService.editPropertybyidbuilder(payload, id)
         console.log("edit property response", apiRes)

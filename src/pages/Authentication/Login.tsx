@@ -48,12 +48,12 @@ const Signin = (props: any) => {
                 }
                 toast.info(response.message);
                 // Navigate to dashboard or another page after successful login
-                // props.router.navigate("/dashboard-real-estate");
-                setTimeout(() => {
-                setLoading(false);
+                props.router.navigate("/dashboard-real-estate");
+                // setTimeout(() => {
+                // setLoading(false);
                     
-                    props.router.navigate("/dashboard-real-estate");
-                  }, 1500);
+                //     props.router.navigate("/dashboard-real-estate");
+                //   }, 1500);
             } catch (error: any) {
                 setErrorMsg(error.message || "Login failed");
                 setLoading(false);

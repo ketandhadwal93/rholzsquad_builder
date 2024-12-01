@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ErrorMessage } from 'formik';
 import {
     TextField,
@@ -9,8 +9,33 @@ import {
     Grid,
 } from '@mui/material';
 import { plan_style_select_data, plan_type_Select_data } from '../constant';
+import ApiService from 'serviceArchitecture/services/apiservice';
 
 const FirstStep = ({ setFieldValue, errors, touched, values }) => {
+console.log('First step1------>',values)
+    const [planStylesdata, setPlanStylesdata] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPlanStyles = async () => {
+      try {
+        setLoading(true);
+        const response = await ApiService.getPlanStyles();
+        const formattedData = response.data.map((item) => ({
+          value: item._id,
+          label: item.name,
+        }));
+        setPlanStylesdata(formattedData);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch plan styles');
+        setLoading(false);
+      }
+    };
+
+    fetchPlanStyles();
+  }, []);
     return (
         <>
 
@@ -28,16 +53,8 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
                 </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    {/* <TextField
-                        name="plan_style"
-                        label="Plan Style"
-                        variant="outlined"
-                        value={values.plan_style}
-                        onChange={(e) => setFieldValue('plan_style', e.target.value)}
-                        error={touched.plan_style && Boolean(errors.plan_style)}
-                        helperText={<ErrorMessage name="plan_style" />}
-                    /> */}
+                {/* <FormControl fullWidth margin="normal">
+                  
                     <InputLabel id="plan_style-label">Plan Style</InputLabel>
                     <Select
                         labelId="plan_style-label"
@@ -56,7 +73,32 @@ const FirstStep = ({ setFieldValue, errors, touched, values }) => {
                         })}
                     </Select>
                     <ErrorMessage name="plan_style" component="div" />
-                </FormControl>
+                </FormControl> */}
+                <FormControl fullWidth margin="normal">
+          <InputLabel id="plan_style-label">Plan Style</InputLabel>
+          <Select
+            labelId="plan_style-label"
+            name="plan_style"
+            error={touched.plan_style && Boolean(errors.plan_style)}
+    
+            value={values?.plan_style  || values?.plan_style_id?._id || '' }
+            // onChange={(e) => setFieldValue('plan_style', e.target.value )}
+            onChange={(e) => {
+  console.log('Selected plan style ID:', e.target.value);  // Log the value being set
+  setFieldValue('plan_style', e.target.value);
+}}
+            // onChange={(e) => {
+            //   const selectedPlan = planStylesdata.find(style => style.value === e.target.value); // Find full object by _id
+            //   setFieldValue('plan_style_id', selectedPlan); // Set full object
+            // }}
+          >
+            {planStylesdata.map((style, index) => (
+              <MenuItem key={index} value={style.value}>
+                {style.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
                 <FormControl fullWidth margin="normal">

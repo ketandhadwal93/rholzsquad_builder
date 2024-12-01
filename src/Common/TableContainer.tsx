@@ -97,7 +97,7 @@ const TableContainer = ({
   PaginationClassName,
   SearchPlaceholder
 }: TableContainerProps) => {
-
+console.log(`TableContainer`,data)
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
 
