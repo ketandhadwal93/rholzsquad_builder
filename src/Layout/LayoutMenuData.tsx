@@ -1005,7 +1005,7 @@ const Navdata = () => {
             },
             {
                 id: "earnings",
-                label: "Earnings",
+                label: "Orders",
                 icon: "ph-currency-circle-dollar-thin",
                 link: "/apps-real-estate-earning",
                 parentId: "real-estate",

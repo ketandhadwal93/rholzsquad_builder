@@ -185,6 +185,106 @@ const SecondStep = ({ setFieldValue, errors, touched, values }) => {
                     <ErrorMessage name="exterior_walls" component="div" />
                 </FormControl>
             </Grid> */}
+            {/* Add missing fields */}
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="total_heated_area"
+            label="Total Heated Area"
+            variant="outlined"
+            value={values.total_heated_area}
+            onChange={(e) => setFieldValue('total_heated_area', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="first_floor"
+            label="First Floor Sq Ft"
+            variant="outlined"
+            value={values.first_floor}
+            onChange={(e) => setFieldValue('first_floor', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="second_floor"
+            label="Second Floor Sq Ft"
+            variant="outlined"
+            value={values.second_floor}
+            onChange={(e) => setFieldValue('second_floor', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="porch_rear"
+            label="Rear Porch Sq Ft"
+            variant="outlined"
+            value={values.porch_rear}
+            onChange={(e) => setFieldValue('porch_rear', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="porch_front"
+            label="Front Porch Sq Ft"
+            variant="outlined"
+            value={values.porch_front}
+            onChange={(e) => setFieldValue('porch_front', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
+      {/* <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="loft"
+            label="Loft Sq Ft"
+            variant="outlined"
+            value={values.loft}
+            onChange={(e) => setFieldValue('loft', e.target.value)}
+          />
+        </FormControl>
+      </Grid> */}
+      {/* <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="optional_lower_level"
+            label="Optional Lower Level Sq Ft"
+            variant="outlined"
+            value={values.optional_lower_level}
+            onChange={(e) => setFieldValue('optional_lower_level', e.target.value)}
+          />
+        </FormControl>
+      </Grid> */}
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="ceiling_first_floor"
+            label="Ceiling First Floor Area"
+            variant="outlined"
+            value={values.ceiling_first_floor}
+            onChange={(e) => setFieldValue('ceiling_first_floor', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
+      {/* <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="ceiling_loft"
+            label="Ceiling Loft"
+            variant="outlined"
+            value={values.ceiling_loft}
+            onChange={(e) => setFieldValue('ceiling_loft', e.target.value)}
+          />
+        </FormControl>
+      </Grid> */}
         </>
     );
 };

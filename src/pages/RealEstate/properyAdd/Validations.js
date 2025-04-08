@@ -8,10 +8,10 @@ import * as Yup from 'yup';
     floors: Yup.string().required('Floors is required'),
     beds: Yup.number().required('Beds is required').min(0),
     baths: Yup.number().required('Baths is required').min(0),
-    cars: Yup.number().required('Cars is required').min(0),
+    cars: Yup.number(),
     story: Yup.number().required('Story is required').min(0),
     no_of_vehicles: Yup.number().required('Number of vehicles is required').min(0),
-    additional_rooms: Yup.number().required('Additional rooms are required').min(1),
+    additional_rooms: Yup.number().required('Additional rooms are required').min(0),
 });
 
 
@@ -19,9 +19,9 @@ import * as Yup from 'yup';
 // second valiation 
 export const step2ValidationSchema = Yup.object({
     sq_ft: Yup.string().required('Square footage is required'),
-    footprint_width: Yup.number().required('Footprint width is required').min(0),
-    footprint_depth: Yup.number().required('Footprint depth is required').min(0),
-    footprint_height: Yup.number().required('Footprint height is required').min(0),
+    footprint_width: Yup.string().required('Footprint width is required'),
+    footprint_depth: Yup.string().required('Footprint depth is required'),
+    footprint_height: Yup.string().required('Footprint height is required'),
  
     bed_bath_options: Yup.number().required('Bed bath options are required').min(1),
     kitchen_dinning: Yup.number().required('Kitchen dining options are required').min(1),

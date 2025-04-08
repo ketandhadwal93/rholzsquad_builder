@@ -29,11 +29,11 @@ const SignUp = () => {
                                         <Form.Control.Feedback type="invalid">Please enter email</Form.Control.Feedback>
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3">
+                                    {/* <Form.Group className="mb-3">
                                         <Form.Label htmlFor="username">Username <span className="text-danger">*</span></Form.Label>
                                         <Form.Control type="text" id="username" placeholder="Enter username" required />
                                         <Form.Control.Feedback type="invalid">Please enter username</Form.Control.Feedback>
-                                    </Form.Group>
+                                    </Form.Group> */}
 
                                     <Form.Group className="mb-3">
                                         <Form.Label htmlFor="password-input">Password <span className="text-danger">*</span></Form.Label>

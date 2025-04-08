@@ -18,7 +18,8 @@ const Earning = () => {
     console.log("earningdddddddddd+>>>>>>>>>>>>>>>>>",earningdata)
     document.title = "Earnings | Steex - Admin & Dashboard Template";
     const [earningList, setEarningList] = useState([]);
-
+    const [earning, setEarning] = useState<any>(earningdata);
+    const [selectDate, setSelectDate] = useState(0);
     const dispatch = useDispatch<any>();
 
     useEffect(() => {
@@ -80,15 +81,6 @@ const Earning = () => {
         })
     );
 
-    // const { earningList } = useSelector(selectEarningList);
-
-
-    // useEffect(() => {
-    //     dispatch(onGetEarningList());
-    // }, [dispatch]);
-
-    const [earning, setEarning] = useState<any>(earningdata);
-    const [selectDate, setSelectDate] = useState(0);
 
     //search
     const handleSearch = (event: any) => {
@@ -101,9 +93,6 @@ const Earning = () => {
         }
     };
 
-    // useEffect(() => {
-    //     setEarning(earningList);
-    // }, [earningList]);
 
     const column = useMemo(
         () => [
@@ -123,31 +112,31 @@ const Earning = () => {
                 enableColumnFilter: false,
                 enableSorting: false,
             },
+            // {
+            //     header: "#",
+            //     accessorKey: "icon",
+            //     enableColumnFilter: false,
+            //     enableSorting: true,
+            //     cell: (cell: any) => {
+            //         return (
+            //             <span className={`in_out text-${cell.row.original.color} fs-md`}><i className={cell.row.original.icon}></i></span>
+            //         );
+            //     }
+            // },
             {
-                header: "#",
-                accessorKey: "icon",
+                header: "Order ID",
+                accessorKey: "order_no",
                 enableColumnFilter: false,
                 enableSorting: true,
                 cell: (cell: any) => {
                     return (
-                        <span className={`in_out text-${cell.row.original.color} fs-md`}><i className={cell.row.original.icon}></i></span>
+                        <Link to="/apps-real-estate-agencies-overview" className="fw-medium link-primary">{cell.getValue()}</Link>
                     );
                 }
             },
             {
-                header: "Transaction ID",
-                accessorKey: "transactionID",
-                enableColumnFilter: false,
-                enableSorting: true,
-                cell: (cell: any) => {
-                    return (
-                        <Link to="/apps-real-estate-agencies-overview" className="fw-medium link-primary">#{cell.getValue()}</Link>
-                    );
-                }
-            },
-            {
-                header: "Timestamp",
-                accessorKey: "timestamp",
+                header: "Order Time",
+                accessorKey: "createdAt",
                 enableColumnFilter: false,
                 enableSorting: true,
                 cell: (cell: any) => {
@@ -157,30 +146,33 @@ const Earning = () => {
                 }
             },
             {
-                header: "Details",
-                accessorKey: "details",
+                header: "Customer name",
+                accessorKey: "user_id.name",
                 enableColumnFilter: false,
                 enableSorting: true,
                 cell: (cell: any) => {
                     return (
-                        <span >{cell.getValue()} </span>
+                        <span >{cell.getValue() || '--' } </span>
                     );
                 }
             },
             {
-                header: "Type",
-                accessorKey: "type",
+                header: "Payment method",
+                accessorKey: "payment_mode",
                 enableColumnFilter: false,
                 enableSorting: true,
                 cell: (cell: any) => {
+                    const paymentMode = cell.getValue();
                     return (
-                        <span >{cell.getValue()} </span>
+                        <span>
+                            {paymentMode == 2 ? "Online Payment" : paymentMode == 1 ? "Cash on Delivery" : "Unknown"}
+                        </span>
                     );
                 }
             },
             {
                 header: "Amount",
-                accessorKey: "amount",
+                accessorKey: "to_pay",
                 enableColumnFilter: false,
                 enableSorting: true,
                 cell: (cell: any) => {
@@ -190,21 +182,35 @@ const Earning = () => {
                 }
             },
             {
-                header: "Status",
-                accessorKey: "status",
+                header: "Payment Status",
+                accessorKey: "payment_status",
                 enableColumnFilter: false,
                 enableSorting: true,
                 cell: (cell: any) => {
-                    switch (cell.getValue()) {
-                        case "Pending":
-                            return (<Badge bg="warning-subtle" text="warning">{cell.getValue()} </Badge>);
-                        case "Cancelled":
-                            return (<Badge bg="danger-subtle" text="danger">{cell.getValue()} </Badge>);
+                    const paymentStatus = cell.getValue();
+                    switch (paymentStatus) {
+                        case 0:
+                            return (
+                                <Badge bg="warning-subtle" text="warning">
+                                    Pending Payment
+                                </Badge>
+                            );
+                        case 1:
+                            return (
+                                <Badge bg="success-subtle" text="success">
+                                    Successful Payment
+                                </Badge>
+                            );
                         default:
-                            return (<Badge bg="success-subtle" text="success">{cell.getValue()} </Badge>);
+                            return (
+                                <Badge bg="secondary-subtle" text="secondary">
+                                    Unknown Status
+                                </Badge>
+                            );
                     }
                 }
             },
+            
         ], []
     );
     return (
@@ -302,7 +308,7 @@ const Earning = () => {
                                         <TableContainer
                                             isPagination={true}
                                             columns={column}
-                                            data={earningdata || []}
+                                            data={earning || []}
                                             customPageSize={10}
                                             tableClass="table-borderless table-centered align-middle table-nowrap mb-0"
                                             theadClass="text-muted table-light"

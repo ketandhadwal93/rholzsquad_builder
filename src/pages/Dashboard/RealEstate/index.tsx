@@ -21,6 +21,7 @@ const RealEstate = () => {
           try {
             const data = await ApiService.getDashboardData(); // Fetch dashboard data
             setDashboardData(data);
+            console.log('-->',dashboardData?.data)
           } catch (err: any) {
             setError(err.message);
           }
@@ -37,8 +38,8 @@ const RealEstate = () => {
                 <BreadCrumb title="REAL ESTATE" pageTitle="Dashboards" />
                 <Widgets />
                 <Row>
-                    <PropertiesType />
-                    <RevenueOverview />
+                    <PropertiesType dashboardData={dashboardData} />
+                    <RevenueOverview dashboardData={dashboardData} />
                 </Row>
                 {/* <Row>
                     <Property />

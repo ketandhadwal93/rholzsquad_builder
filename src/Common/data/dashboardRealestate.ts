@@ -221,7 +221,7 @@ const RealEstateData = [
     },
     {
         id: 2,
-        name: "Properties for rent",
+        name: "Properties listed",
         amount: 1524,
         perstange: "02.33%",
         isArrow: true,
@@ -230,7 +230,7 @@ const RealEstateData = [
     },
     {
         id: 3,
-        name: "Visitors",
+        name: "Customer Count",
         amount: 149.36,
         decimal: 2,
         perstange: "12.33%",
@@ -241,7 +241,7 @@ const RealEstateData = [
     },
     {
         id: 4,
-        name: "Residency Property",
+        name: "Income generated",
         amount: 2376,
         perstange: "09.57%",
         isArrow: false,

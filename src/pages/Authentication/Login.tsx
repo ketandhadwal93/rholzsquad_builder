@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import AuthService from '../../serviceArchitecture/services/authservice';
 // import toast  from 'react-toastify';
 import { toast } from 'react-toastify';
+import ApiService from 'serviceArchitecture/services/apiservice';
 
 const Signin = (props: any) => {
     const [userLogin, setUserLogin] = useState<any>([]);
@@ -29,8 +30,8 @@ const Signin = (props: any) => {
     const validation = useFormik({
         enableReinitialize: true,
         initialValues: {
-            email: userLogin.email || "john@yopmail.com" || '',
-            password: userLogin.password || "123456" || '',
+            email: userLogin.email  || '',
+            password: userLogin.password  || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),
@@ -48,6 +49,11 @@ const Signin = (props: any) => {
                 }
                 toast.info(response.message);
                 // Navigate to dashboard or another page after successful login
+      // Fetch profile data
+      const profileResponse = await ApiService.getProfileData();
+      localStorage.setItem("userProfile", JSON.stringify(profileResponse));
+
+
                 props.router.navigate("/dashboard-real-estate");
                 // setTimeout(() => {
                 // setLoading(false);

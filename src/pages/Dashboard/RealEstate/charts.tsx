@@ -121,7 +121,10 @@ const PropertiesTypeChart = ({ dataColors }: any) => {
     );
 };
 
-const RevenueChart = ({ dataColors }: any) => {
+const RevenueChart = ({ dataColors, dashboardData }: { dataColors: string; dashboardData: any }) => {
+    const earningsData = dashboardData?.data?.graph_earning_by_month?.map((item: any) => item?.total_earnings);
+    console.log('indata chart component',earningsData)
+
     const totalRevenueColors = getChartColorsArray(dataColors);
 
     // chart re-render
@@ -138,7 +141,9 @@ const RevenueChart = ({ dataColors }: any) => {
 
     const series = [{
         name: 'Income',
-        data: [26, 24.65, 18.24, 29.02, 23.65, 27, 21.18, 24.65, 27.32, 25, 24.65, 29.32]
+        // data: [26, 24.65, 18.24, 29.02, 23.65, 27, 21.18, 24.65, 27.32, 25, 24.65, 29.32]
+        data: earningsData 
+
     }];
 
     const options = {

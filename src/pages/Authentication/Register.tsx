@@ -25,12 +25,12 @@ const Register = () => {
 
         initialValues: {
             email: '',
-            username: '',
+            // username: '',
             password: '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Email"),
-            username: Yup.string().required("Please Enter Username"),
+            // username: Yup.string().required("Please Enter Username"),
             password: Yup.string().required("Please Enter Password").matches(
                 /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/,
                 "Must contain 8 characters, one uppercase, one lowercase, and one number"
@@ -112,7 +112,7 @@ const Register = () => {
                                         ) : null}
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3">
+                                    {/* <Form.Group className="mb-3">
                                         <Form.Label htmlFor="username">
                                             Username <span className="text-danger">*</span>
                                         </Form.Label>
@@ -133,7 +133,7 @@ const Register = () => {
                                                 {validation.errors.username}
                                             </Form.Control.Feedback>
                                         ) : null}
-                                    </Form.Group>
+                                    </Form.Group> */}
 
                                     <Form.Group className="mb-3">
                                         <Form.Label htmlFor="password-input">

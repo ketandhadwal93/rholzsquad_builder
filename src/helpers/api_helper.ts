@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { api } from "../config";
-// axios.defaults.baseURL = "https://api.rholzsquad.com/";
-axios.defaults.baseURL = "http://161.35.110.165:3009/";
+axios.defaults.baseURL = "https://rholzsquad.com/api/";
+// axios.defaults.baseURL = "http://161.35.110.165:3009/";
 
 // axios.defaults.baseURL = "https://api-node.themesbrand.website";
 // content type

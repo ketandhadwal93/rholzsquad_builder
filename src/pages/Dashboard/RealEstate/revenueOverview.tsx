@@ -5,7 +5,8 @@ import Flatpickr from 'react-flatpickr';
 
 import { IncomeChart, PropertyRentChart, PropertySaleChart, RevenueChart } from './charts';
 
-const RevenueOverview = () => {
+const RevenueOverview = ({ dashboardData }: { dashboardData: any }) => {
+    console.log('12',dashboardData)
     return (
         <React.Fragment>
             <Col xxl={8}>
@@ -42,7 +43,7 @@ const RevenueOverview = () => {
                                                 <p className="mb-0">Total Revenue</p>
                                             </div>
                                         </Nav.Link>
-                                        <Nav.Link eventKey='2' className="d-flex p-2 gap-3" id="income-tab">
+                                        <Nav.Link  className="d-flex p-2 gap-3" id="income-tab">
                                             <div className="avatar-sm flex-shrink-0">
                                                 <div className="avatar-title rounded bg-success-subtle text-success fs-2xl">
                                                     <i className="bi bi-coin"></i>
@@ -53,7 +54,7 @@ const RevenueOverview = () => {
                                                 <p className="mb-0">Total Income</p>
                                             </div>
                                         </Nav.Link>
-                                        <Nav.Link eventKey='3' className="d-flex p-2 gap-3" id="property-sale-tab" >
+                                        <Nav.Link  className="d-flex p-2 gap-3" id="property-sale-tab" >
                                             <div className="avatar-sm flex-shrink-0">
                                                 <div className="avatar-title rounded bg-danger-subtle text-danger fs-2xl">
                                                     <i className="bi bi-coin"></i>
@@ -64,7 +65,7 @@ const RevenueOverview = () => {
                                                 <p className="mb-0">Property Sell</p>
                                             </div>
                                         </Nav.Link>
-                                        <Nav.Link eventKey='4' className="d-flex p-2 gap-3" id="_-tab" >
+                                        <Nav.Link className="d-flex p-2 gap-3" id="_-tab" >
                                             <div className="avatar-sm flex-shrink-0">
                                                 <div className="avatar-title rounded bg-primary-subtle text-primary fs-2xl">
                                                     <i className="bi bi-coin"></i>
@@ -80,7 +81,7 @@ const RevenueOverview = () => {
                                 <Col lg={9}>
                                     <Tab.Content className="text-muted">
                                         <Tab.Pane eventKey='1' id="revenue" role="tabpanel">
-                                            <RevenueChart dataColors='["--tb-primary"]' />
+                                            <RevenueChart dataColors='["--tb-primary"]'  dashboardData={dashboardData}  />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey='2' id="income" role="tabpanel">
                                             <IncomeChart dataColors='["--tb-success"]' />

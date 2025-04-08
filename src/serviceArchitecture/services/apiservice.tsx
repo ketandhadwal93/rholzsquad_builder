@@ -278,7 +278,22 @@ const ApiService = {
           throw new Error(`Failed to update builder status: ${error}`);
         }
       },
-      
-      
+      getProfileData: async (params = {}) => {
+        try {
+          const response = await apiClient.get('/builder/profile', params); // Update '/plan-styles' with the actual endpoint
+          return response.data;
+        } catch (error) {
+          throw new Error(`Failed to fetch plan styles: ${error}`);
+        }
+      },
+      updateProfile: async (profileData:any) => {
+        try {
+            const response:any = await apiClient.put('/builder/profile', profileData, );
+            return response.data;
+        } catch (error:any) {
+            throw new Error(`Failed to update profile: ${error.message}`);
+        }
+    },
+    
 };
 export default ApiService;

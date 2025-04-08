@@ -11,7 +11,7 @@ import {
 import { plan_style_select_data, plan_type_Select_data } from '../constant';
 import ApiService from 'serviceArchitecture/services/apiservice';
 
-const FirstStep = ({ setFieldValue, errors, touched, values }) => {
+const FirstStepEdit = ({ setFieldValue, errors, touched, values }) => {
 console.log('First step1------>',values)
     const [planStylesdata, setPlanStylesdata] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -219,9 +219,30 @@ console.log('First step1------>',values)
                     />
                 </FormControl>
             </Grid>
-
+            {/* <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="bedrooms"
+            label="Bedrooms"
+            variant="outlined"
+            value={values.bedrooms}
+            onChange={(e) => setFieldValue('bedrooms', e.target.value)}
+          />
+        </FormControl>
+      </Grid> */}
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth margin="normal">
+          <TextField
+            name="full_bathrooms"
+            label="Full Bathrooms"
+            variant="outlined"
+            value={values.full_bathrooms}
+            onChange={(e) => setFieldValue('full_bathrooms', e.target.value)}
+          />
+        </FormControl>
+      </Grid>
         </>
     );
 };
 
-export default FirstStep;
+export default FirstStepEdit;

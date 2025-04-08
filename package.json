@@ -2,7 +2,7 @@
   "name": "steex-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/builder",
+  "homepage": "builder",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^40.1.0",
     "@ckeditor/ckeditor5-core": "^40.1.0",

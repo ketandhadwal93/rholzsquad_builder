@@ -14,7 +14,7 @@ const ProfileSetting = () => {
         <Container fluid>
           <BreadCrumb title='Profile Settings' pageTitle='Pages' />
           <Row>
-            <Right />
+            {/* <Right /> */}
             <Personal />
           </Row>
         </Container>

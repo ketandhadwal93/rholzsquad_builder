@@ -6,8 +6,27 @@ import getChartColorsArray from 'Common/ChartsDynamicColor';
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-const PropertiesType = () => {
+const PropertiesType = ({ dashboardData }: { dashboardData: any }) => {
     const dataColors = '["--tb-primary", "--tb-secondary", "--tb-light","--tb-danger", "--tb-success"]';
+   // Transform property_styles data into the chart format
+   const transformedData = dashboardData?.data?.property_styles.map((item: any) => ({
+    value: item.properties_count,
+    name: item.name
+})) || [];
+const totalProperties = transformedData.reduce((sum: number, item: any) => sum + item.value, 0);
+
+transformedData.push({
+    value: totalProperties,
+    itemStyle: {
+        color: 'none',
+        decal: {
+            symbol: 'none'
+        }
+    },
+    label: {
+        show: false
+    }
+});
 
     // chart re-render
     const selectLayoutThemeType = createSelector(
@@ -54,26 +73,8 @@ const PropertiesType = () => {
                     // borderColor: 'transparent',
                     borderWidth: 4
                 },
-                data: [
-                    { value: 1048, name: 'Residency' },
-                    { value: 735, name: 'Commercial' },
-                    { value: 580, name: 'Villa' },
-                    { value: 484, name: 'Apartment' },
-                    {
-                        // make an record to fill the bottom 50%
-                        value: 1048 + 735 + 580 + 484,
-                        itemStyle: {
-                            // stop the chart from rendering this piece
-                            color: 'none',
-                            decal: {
-                                symbol: 'none'
-                            }
-                        },
-                        label: {
-                            show: false
-                        }
-                    }
-                ]
+                
+                data: transformedData
             }
         ],
         color: propertyTypeColors
@@ -94,7 +95,7 @@ const PropertiesType = () => {
                 <Card>
                     <Card.Header className="d-flex">
                         <h4 className="card-title mb-0 flex-grow-1">Properties Type</h4>
-                        <Dropdown className="card-header-dropdown float-end cursor-pointer">
+                        {/* <Dropdown className="card-header-dropdown float-end cursor-pointer">
                             <Dropdown.Toggle as='a' className="text-reset arrow-none mb-0">
                                 <i className="bi bi-three-dots-vertical"></i>
                             </Dropdown.Toggle>
@@ -104,7 +105,7 @@ const PropertiesType = () => {
                                 <li><Dropdown.Item href="#">Last Month</Dropdown.Item></li>
                                 <li><Dropdown.Item href="#">Current Year</Dropdown.Item></li>
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </Dropdown> */}
                     </Card.Header>
                     <Card.Body>
                         <ReactEcharts
